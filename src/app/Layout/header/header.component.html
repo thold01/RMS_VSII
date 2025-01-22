@@ -1,0 +1,18 @@
+<div class="h-[64px] border-b border-b-[#00000033] bg-white flex items-center  justify-between px-10">
+    <!-- Logo -->
+    <div>
+        <img src="/assets/BIDVfull.png" alt="imageLogo" class="h-[40px]" />
+    </div>
+    
+    <!-- Thông tin người dùng -->
+    <div *ngFor="let user of users" class="flex flex-col items-end gap-1">
+        <div>
+            <p class="text-[16px] font-semibold">{{ user.name }}</p>
+        </div>
+        
+        <!-- Phần userId không chiếm hết chiều ngang -->
+        <div class="bg-[#D7F3F2] text-[#006B68] text-center text-[11px] font-medium rounded-md px-4 py-[2px]">
+            ID:{{ user.userId }}
+        </div>
+    </div>
+</div>

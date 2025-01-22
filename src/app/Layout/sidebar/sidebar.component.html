@@ -1,0 +1,37 @@
+<div class="bg-[#006B68] h-screen  flex flex-col justify-between">
+
+    <div class="flex flex-col justify-start">
+      <!-- Logo trên Sidebar -->
+      <div class="text-[10px] border-b border-b-[#FFFFFF33] h-[64px] flex items-center justify-center px-4">
+        <img src="assets/SidebarCollape.png" alt="Sidebar Logo" />
+      </div>
+  
+      <!-- Các item trong sidebar -->
+      <div *ngFor="let item of list" (click)="setActive(item.id)">
+        <div class="text-[10px] text-center py-2 px-1 pr-[10px] cursor-pointer text-white relative flex flex-col items-center justify-start space-x-2" [ngClass]="{
+          'bg-[#003634] rounded-sm': item.active,
+          'text-gray-400': !item.active
+        }">  
+          <div [ngClass]="{'absolute w-[2px] left-1 top-[12px] h-[32px] bg-white rounded-md':item.active}">
+          </div>
+          <!-- Ảnh của mỗi item -->
+          <img [src]="item.icon" alt="{{item.name}}" class="w-6 h-6 inline-block" />
+  
+          <!-- Tên của item -->
+          <span class="mt-1">{{ item.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    
+  
+    <!-- Đăng xuất -->
+    <div class="flex items-start justify-center h-[300px] border-t-[1px] border-[#FFFFFF33]">
+      <div class="flex flex-col items-center justify-center mt-[10px]">
+        <img src="assets/SignOut.png" alt="SignOut" class="w-[25px] h-[25px]" />
+        <p class="text-[10px] cursor-pointer text-white mt-[5px]">Đăng xuất</p>
+      </div>
+    </div>
+  
+  </div>
+  
