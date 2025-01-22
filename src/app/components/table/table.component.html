@@ -1,4 +1,4 @@
-<table tuiTable [style.width.rem]="36">
+<table tuiTable [style.width.rem]="36" class="w-full text-left border-collapse">
   <caption tuiCaption>
     <button
       appearance="flat"
@@ -37,8 +37,12 @@
       <td tuiTd>{{ item.ten_ky_thi }}</td>
       <td tuiTd>{{ item.hinh_thuc_thi }}</td>
       <td tuiTd>{{ item.doi_tuong_thi }}</td>
-      <td tuiTd class="text-red-400 font-bold">
-        {{ item.vi_tri_thi }}
+      <td tuiTd>
+        <span
+          class="text-[#50d71e] border-solid border-gray-300 rounded-lg border-1"
+        >
+          {{ item.vi_tri_thi }}
+        </span>
       </td>
       <td tuiTd>{{ item.mon_thi_nghiep_vu }}</td>
       <td tuiTd>action</td>

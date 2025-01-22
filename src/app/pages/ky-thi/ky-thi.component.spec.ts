@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChooseExamComponent } from './choose-exam.component';
+import { ChooseExamComponent } from './ky-thi.component';
 
 describe('ChooseExamComponent', () => {
   let component: ChooseExamComponent;

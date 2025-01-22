@@ -36,7 +36,6 @@ export default class FiltersComponent {
   protected readonly filters = new FormArray([
     new FormControl(),
     new FormControl(),
-    new FormControl(),
     new FormControl(new TuiDay(2023, 0, 1)),
     new FormControl(new TuiDay(2023, 0, 1)),
   ]);

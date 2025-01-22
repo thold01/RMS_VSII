@@ -1,4 +1,7 @@
 module.exports = {
+  corePlugins: {
+    preflight: false, // Tắt preflight để không xung đột với Taiga UI
+  },
   content: [
     "./src/**/*.{html,ts}",
   ],
@@ -10,5 +13,6 @@ module.exports = {
     },
   },
   plugins: [],
+  important: true,
 }
 
