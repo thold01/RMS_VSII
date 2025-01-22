@@ -1,0 +1,24 @@
+<search tuiSearch>
+  <form [formGroup]="form">
+    <fieldset formArrayName="filters">
+      <tui-search-filters>
+        Filters
+        <button tuiButton type="reset">Reset</button>
+        <ng-container *ngFor="let control of filters.controls; let i = index">
+          <!-- Các filter đầu tiên -->
+          <ng-container *ngIf="i < filters.length - 2">
+            <tui-textfield *tuiItem>
+              <label tuiLabel>Filter {{ i + 1 }}</label>
+              <input placeholder="Search" tuiTextfield [formControlName]="i" />
+            </tui-textfield>
+          </ng-container>
+        </ng-container>
+      </tui-search-filters>
+      <button tuiButton type="button">Search</button>
+    </fieldset>
+  </form>
+</search>
+<p>
+  <code>{{ form.value | json }}</code>
+</p>
+<app-input-date></app-input-date>

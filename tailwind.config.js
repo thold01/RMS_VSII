@@ -3,7 +3,12 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      borderColor: {
+        default: 'var(--border-default, #00000033)',
+      },
+    },
   },
   plugins: [],
 }
+

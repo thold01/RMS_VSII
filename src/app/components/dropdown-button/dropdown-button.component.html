@@ -1,0 +1,26 @@
+<tui-select
+  class="tui-space_vertical-4"
+  [tuiDropdownMobile]="'Select user'"
+  [tuiTextfieldLabelOutside]="true"
+  [valueContent]="template"
+  [(ngModel)]="user"
+>
+  Select user
+  <tui-data-list-wrapper
+    *tuiDataList
+    [itemContent]="template"
+    [items]="users"
+  />
+</tui-select>
+
+<ng-template #template let-user>
+  <span tuiCell>
+    <tui-avatar [src]="user.url" />
+    <span tuiTitle>
+      {{ user.name }}
+      <span tuiSubtitle>
+        {{ user.balance | tuiAmount : "$" : "left" | async }}
+      </span>
+    </span>
+  </span>
+</ng-template>

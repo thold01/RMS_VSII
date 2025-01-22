@@ -1,0 +1,47 @@
+<table tuiTable [style.width.rem]="36">
+  <caption tuiCaption>
+    <button
+      appearance="flat"
+      tuiButton
+      tuiButtonSelect
+      type="button"
+      [(ngModel)]="size"
+    >
+      {{ index * size + 1 }}-{{ (index + 1) * size }} rows
+      <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        [itemContent]="content"
+        [items]="items"
+      />
+    </button>
+    <tui-pagination
+      [length]="length"
+      [style.float]="'center'"
+      [(index)]="index"
+    />
+  </caption>
+  <thead>
+    <tr tuiThGroup>
+      <th tuiTh>STT</th>
+      <th tuiTh>Tên kỳ thi</th>
+      <th tuiTh>Hình thức thi</th>
+      <th tuiTh>Đối tượng thi</th>
+      <th tuiTh>Vị trí thi</th>
+      <th tuiTh>Môn thi nghiệp vụ</th>
+      <th tuiTh></th>
+    </tr>
+  </thead>
+  <tbody tuiTbody>
+    <tr *ngFor="let item of data; let i = index">
+      <td tuiTd>{{ i + 1 }}</td>
+      <td tuiTd>{{ item.ten_ky_thi }}</td>
+      <td tuiTd>{{ item.hinh_thuc_thi }}</td>
+      <td tuiTd>{{ item.doi_tuong_thi }}</td>
+      <td tuiTd class="text-red-400 font-bold">
+        {{ item.vi_tri_thi }}
+      </td>
+      <td tuiTd>{{ item.mon_thi_nghiep_vu }}</td>
+      <td tuiTd>action</td>
+    </tr>
+  </tbody>
+</table>
