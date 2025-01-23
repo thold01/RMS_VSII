@@ -1,26 +1,46 @@
-<tui-select
-  class="tui-space_vertical-4"
-  [tuiDropdownMobile]="'Select user'"
-  [tuiTextfieldLabelOutside]="true"
-  [valueContent]="template"
-  [(ngModel)]="user"
->
-  Select user
-  <tui-data-list-wrapper
-    *tuiDataList
-    [itemContent]="template"
-    [items]="users"
-  />
-</tui-select>
+<form [formGroup]="form" class="space-y-2">
+  <button
+    appearance="outline-grayscale"
+    tuiButton
+    type="button"
+    [tuiAppearanceMode]="length ? 'checked' : null"
+    [tuiDropdown]="dropdown"
+    [(tuiDropdownOpen)]="open"
+    (keydown.delete)="form.reset()"
+  >
+    {{ text }}
+  </button>
+  <ng-template #dropdown>
+    <div class="p-4 border border-gray-300 rounded bg-white shadow-md w-64">
+      <!-- Checkboxes -->
+      <div *ngFor="let item of items" class="flex items-center mb-2">
+        <input
+          type="checkbox"
+          [value]="item"
+          (change)="onCheckboxChange($event)"
+          [checked]="isChecked(item)"
+          class="form-checkbox h-4 w-4 text-blue-600"
+        />
+        <label class="ml-2 text-sm text-gray-700">{{ item }}</label>
+      </div>
 
-<ng-template #template let-user>
-  <span tuiCell>
-    <tui-avatar [src]="user.url" />
-    <span tuiTitle>
-      {{ user.name }}
-      <span tuiSubtitle>
-        {{ user.balance | tuiAmount : "$" : "left" | async }}
-      </span>
-    </span>
-  </span>
-</ng-template>
+      <!-- Actions -->
+      <div class="flex justify-end mt-4 space-x-2">
+        <button
+          type="button"
+          class="px-4 py-2 text-sm font-medium text-gray-700 border rounded hover:bg-gray-100"
+          (click)="cancel()"
+        >
+          Hủy
+        </button>
+        <button
+          type="button"
+          class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700"
+          (click)="confirm()"
+        >
+          Xác nhận
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</form>

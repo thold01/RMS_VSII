@@ -7,6 +7,8 @@ import { TuiFieldErrorPipe, TuiItemsWithMore, TuiUnfinishedValidator } from '@ta
 import { TuiSearch } from '@taiga-ui/layout';
 import { TuiInputDateModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 import InputDateComponent from '../input-date/input-date.component';
+import DropdownButtonComponent from '../dropdown-button/dropdown-button.component';
+import SearchInputComponent from '../search-input/search-input.component';
 
 @Component({
   standalone: true,
@@ -28,6 +30,8 @@ import InputDateComponent from '../input-date/input-date.component';
     TuiTextfieldControllerModule,
     TuiUnfinishedValidator,
     InputDateComponent,
+    DropdownButtonComponent,
+    SearchInputComponent
   ],
   templateUrl: './filters.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,4 +49,5 @@ export default class FiltersComponent {
   onDateSelected(index: number, date: TuiDay): void {
     console.log(`Ngày được chọn ở filter ${index}:`, date);
   }
+  isDropdownButtonVisible: boolean = true;
 }

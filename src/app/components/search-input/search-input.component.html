@@ -1,1 +1,9 @@
-<p>search-input works!</p>
+<tui-input
+  tuiHintDirection="bottom-right"
+  tuiTextfieldIconLeft="@tui.search"
+  class="input"
+  [tuiTextfieldCleaner]="true"
+  [(ngModel)]="value"
+>
+  <input placeholder="Nhập tên kỳ thi" tuiTextfieldLegacy />
+</tui-input>

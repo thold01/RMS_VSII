@@ -1,28 +1,16 @@
 <search tuiSearch>
   <form [formGroup]="form">
     <fieldset formArrayName="filters">
-      <tui-search-filters>
-        Filters
-        <button tuiButton type="reset">Reset</button>
-        <ng-container *ngFor="let control of filters.controls; let i = index">
-          <!-- Các filter đầu tiên -->
-          <ng-container *ngIf="i < filters.length - 2">
-            <tui-textfield *tuiItem class="w-[337px] h-[44px]">
-              <label tuiLabel>Tất cả trạng thái {{ i + 1 }}</label>
-              <input placeholder="Search" tuiTextfield [formControlName]="i" />
-            </tui-textfield>
-          </ng-container>
-        </ng-container>
-      </tui-search-filters>
+      <div class="flex">
+        <app-search-input class="w-[337px] h-[44px]"></app-search-input>
+        <app-dropdown-button
+          class="w-[337px] h-[44px]"
+          *ngIf="isDropdownButtonVisible"
+        ></app-dropdown-button>
+        <app-input-date class="w-[337px] h-[44px]"></app-input-date>
+        <app-input-date class="w-[337px] h-[44px]"></app-input-date>
+      </div>
       <button tuiButton type="button">Search</button>
     </fieldset>
   </form>
 </search>
-<p>
-  <code>{{ form.value | json }}</code>
-</p>
-
-<div class="flex">
-  <app-input-date></app-input-date>
-  <app-input-date></app-input-date>
-</div>

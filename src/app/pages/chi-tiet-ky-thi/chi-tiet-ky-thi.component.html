@@ -1,0 +1,50 @@
+<div>
+  <div>
+    <app-breadcrumb></app-breadcrumb>
+    <!-- Title -->
+    <div class="flex justify-between items-center">
+      <h1 class="text-lg font-semibold text-gray-900">
+        Thông tin chi tiết kỳ thi
+      </h1>
+      <button
+        type="button"
+        class="px-6 py-2 text-white bg-teal-600 rounded-md hover:bg-teal-700"
+      >
+        Bắt đầu thi
+      </button>
+    </div>
+
+    <!-- Details -->
+    <div class="flex items-center space-x-4">
+      <!-- Icon and Status -->
+      <div class="flex items-center space-x-2">
+        <div
+          class="w-12 h-12 flex items-center justify-center bg-teal-100 rounded-full"
+        >
+          <img
+            src="https://via.placeholder.com/24"
+            alt="Icon"
+            class="w-6 h-6"
+          />
+        </div>
+        <div>
+          <span
+            class="px-2 py-1 text-sm text-teal-700 bg-teal-100 rounded-full"
+          >
+            Chưa bắt đầu
+          </span>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="text-gray-700 text-sm">Thí sinh thi ngoài BIDV</div>
+    </div>
+  </div>
+  <div>
+    <app-detail-table
+      [infoData]="infoData"
+      [tableData]="tableData"
+      [tableColumns]="tableColumns"
+    ></app-detail-table>
+  </div>
+</div>
