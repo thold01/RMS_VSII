@@ -1,0 +1,14 @@
+::ng-deep [tuiAppearance][data-appearance='primary'] {
+    --t-bg: white;
+    background: var(--t-bg);
+    color: black;
+    border: 2px solid #006B68;
+}
+
+::ng-deep [tuiAppearance][data-appearance='flat'] {
+    color: black;
+}
+
+::ng-deep [data-appearance="primary"]:hover {
+    background-color: inherit !important; 
+}

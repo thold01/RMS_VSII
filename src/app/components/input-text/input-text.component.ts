@@ -1,18 +1,21 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TuiIcon } from '@taiga-ui/core';
-import { NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input-text',
-standalone: true,
-  imports: [CommonModule,TuiIcon],
+  standalone: true,
+  imports: [CommonModule, TuiIcon,FormsModule],
   templateUrl: './input-text.component.html',
   styleUrls: ['./input-text.component.scss']
 })
 export class InputTextComponent {
+  @Input() iconName: string = '';  // Tên icon mặc định là 'search'
+  @Input() pla: string = '';
+  value: string = '';
 
-@Input() iconName: string = '';  // Tên icon mặc định là 'search'
-@Input() placeholder: string = '';  
-value: string = '';  
+  clearValue() {
+    this.value = ''
+  }
 }

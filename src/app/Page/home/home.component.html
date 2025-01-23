@@ -1,4 +1,25 @@
-<div class="pl-8 pt-2">
+<div class="px-8 py-5">
     <h1 class="text-[24px] text-[#333333] font-normal">Danh sách</h1>
-    <app-input-text placeholder="Nhap tenn" />
+    <div class="grid grid-cols-7 gap-3 items-center mt-[20px]">
+        <app-input-text pla="Nhập tên kỳ thi" class="col-span-2"/>
+        <div class="col-span-2">
+            <app-drop-down placehoder="Chọn trạng thái" [isIcon]="true" [data]="dataSelect1" [isCheckBox]=true></app-drop-down>
+        </div>
+        <div class="">
+            <app-inputdate  nameDate="Từ ngày"></app-inputdate>
+        </div>
+        <div class="">
+            <app-inputdate nameDate="Đến ngày"></app-inputdate>
+        </div>
+        <div >
+           <button class="bg-[#006B68] text-white text-[16px] rounded-md px-3 py-2">Tìm kiếm</button>
+        </div>
+    </div>
+    <app-table></app-table>
+    <div class="mt-[10px] flex justify-between">
+        <div></div>
+        <app-paginationpage class="ml-[150px]"></app-paginationpage>
+        
+        <app-drop-down class="" placehoder="10/Trang"  [data]="dataSelect2"></app-drop-down>
+    </div>
 </div>

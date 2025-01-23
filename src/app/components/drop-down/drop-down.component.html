@@ -1,0 +1,27 @@
+<div class="relative text-left">
+    <div class="flex items-center border border-gray-300 rounded-md py-[6px] px-3 cursor-pointer"
+        (click)="toggleDropdown()">
+        <label class="mr-2">
+            <img src="/assets/statusIcon.png" alt="Status Icon" class="h-5 w-5" *ngIf="isIcon" />
+        </label>
+        <span class="text-sm text-gray-700">{{placehoder}}</span>
+
+       <tui-icon class="ml-auto h-5 w-5 text-gray-500" svg="chevron-down" size="m" >
+
+       </tui-icon>
+    </div>
+
+    <!-- Dropdown menu -->
+    <div *ngIf="isOpen" class="absolute z-10 mt-2 w-full bg-white border border-gray-300 rounded-md shadow-lg">
+        <div class="py-2">
+            <div *ngFor="let status of data" class="px-4 py-2 flex items-center">
+                <input type="checkbox" [value]="status.value" class="mr-2" *ngIf="isCheckBox" />
+                <span class="text-sm text-gray-700">{{ status.label }}</span>
+            </div>
+        </div>
+        <div class="flex justify-between items-center px-4 py-2 border-t border-gray-200">
+            <app-buttons nameButton="Huỷ" (click) = "cancelSelection()"></app-buttons>
+            <app-buttons nameButton="Xác nhận"></app-buttons>
+        </div>
+    </div>
+</div>
