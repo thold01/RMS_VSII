@@ -15,7 +15,10 @@
            <button class="bg-[#006B68] text-white text-[16px] rounded-md px-3 py-2">Tìm kiếm</button>
         </div>
     </div>
-    <app-table></app-table>
+    <div class="mt-10">
+        <h1 class="text-[20px] font-medium text-[#333333]">Danh sách kì thi</h1>
+    </div>
+    <app-table [onClickHandle]="onClick"  [data]="data" [columnDefinitions]="dataColumnName" [isCheckInput]="true"></app-table>
     <div class="mt-[10px] flex justify-between">
         <div></div>
         <app-paginationpage class="ml-[150px]"></app-paginationpage>

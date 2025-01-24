@@ -2,8 +2,8 @@
     <thead>
         <tr >
             <!-- Lặp qua columns để hiển thị tiêu đề -->
-            <th *ngFor="let column of columnNames" class="table-header">
-                {{ column }}
+            <th *ngFor="let column of columns" class="table-header">
+                {{ column.header }}
             </th>
             <th class="table-header"></th>
         </tr>
@@ -12,13 +12,10 @@
     <tbody>
         <!-- Lặp qua từng item trong data để hiển thị từng dòng -->
         <tr *ngFor="let item of data">
-            <td class="table-cell">{{item.stt}}</td>
-            <td class="table-cell font-medium text-[14px] text-[#333333]">{{item.name}}</td>
-            <td class="table-cell">{{item.nameType}}</td>
-            <td class="table-cell">{{item.target}}</td>
-            <td class="table-cell"><p class="table-border">{{item.location}}</p></td>
-            <td class="table-cell"><p class="table-border">{{item.subject}}</p></td>
-            <td class="table-cell"><app-buttons nameButton="Tham gia"></app-buttons></td>
+            <td *ngFor="let column of columns" class="table-cell">
+                {{ item[column.field] }}
+              </td>
+            <td class="table-cell"><app-buttons (click)="onClickHandle()"   nameButton="Tham gia" *ngIf="isCheckInput"></app-buttons></td>
         </tr>
     </tbody>
 

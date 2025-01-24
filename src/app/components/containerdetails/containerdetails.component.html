@@ -1,0 +1,18 @@
+<div>
+    <div class="grid grid-cols-2 gap-10 text-left">
+        <div>
+            <h1 class="text-[20px] font-medium text-[#333333] border-b border-b-[1px] border-b-[#ccc] pb-4">Thông tin
+                đợt thi</h1>
+            <div>
+                <ng-content select="[column='1']"></ng-content>
+            </div>
+        </div>
+        <div>
+            <h1 class="text-[20px] font-medium text-[#333333] border-b border-b-[1px] border-b-[#ccc] pb-4">Danh sách
+                lãnh đạo</h1>
+            <div>
+                <ng-content select="[column='2']"></ng-content>
+            </div>
+        </div>
+    </div>
+</div>

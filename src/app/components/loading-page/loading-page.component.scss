@@ -1,0 +1,30 @@
+/* Đặt thanh progress bar ở phía trên cùng của trang */
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 9999;
+    height: 5px;
+    width: 100%; /* Đảm bảo thanh tiến độ phủ hết chiều rộng */
+  }
+  
+  /* Định nghĩa thanh loading */
+  .loading-bar {
+    height: 5px;
+    background-color: #006B68; /* Màu thanh tiến độ */
+    width: 0%; /* Bắt đầu từ 0% */
+    animation: loadingAnimation 3s ease-in-out forwards; /* Áp dụng animation */
+  }
+  
+  /* Keyframes để thay đổi width của thanh tiến độ từ 0% đến 100% */
+  @keyframes loadingAnimation {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  

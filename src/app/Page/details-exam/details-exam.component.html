@@ -1,0 +1,40 @@
+<div class="bg-[#efefef] h-screen">
+    <div class="px-10 pt-5">
+        <div class="flex items-center text-[14px] font-normal text-[#666666]">
+            <p (click)='onClick()'>Danh sách kỳ thi</p>
+            <tui-icon  icon="@tui.chevron-right" size="s" ></tui-icon>
+            <p>Chi tiết kỳ thi</p>
+        </div>
+    
+        <div class="flex justify-between items-center mt-4">
+            <div class="flex items-center">
+                <tui-icon icon="@tui.chevron-left" size="s"></tui-icon>
+                <h6 class="text-[24px] font-normal text-[#333333]">Thông tin chi tiết kì thi</h6>
+            </div>
+            <button (click)="modal.open()" class="bg-[#006B68] rounded-md px-4 py-2 text-white text-[16px] font-medium">Tham gia</button>
+        </div>
+        <app-exam-outside></app-exam-outside>
+        <div class="mt-12">
+            <app-containerdetails>
+                <app-information-exam column='1'>
+                    <!--Bên phải-->
+                    <app-form-exam-infomation column='1' nameExam="Thi có tổ chức" labelExam="Hình thức thi"></app-form-exam-infomation>
+                    <app-form-exam-infomation column='1' nameExam="Khảo sát" labelExam="Loại hình khảo sát"></app-form-exam-infomation>
+                    <app-form-exam-infomation column='1' nameExam="Chuyên viên khảo thí" labelExam="Vị trí thi"></app-form-exam-infomation>
+                    <app-form-exam-infomation column='1' nameExam="Môn thi nghiệp vụ" labelExam="Chuyên viên khảo thí"></app-form-exam-infomation>
+                    <app-form-exam-infomation column='1' nameExam="_ _" labelExam="Đơn vị đầu mối"></app-form-exam-infomation>
+                    <!--Bên trái-->
+                    <app-form-exam-infomation column='2' nameExam="Thi có tổ chức" labelExam="HÌnh thức thi"></app-form-exam-infomation>
+                    <app-form-exam-infomation column='2' nameExam="Ngoài hệ thống BIDV" labelExam="Đối tượng thi"></app-form-exam-infomation>
+                    <app-form-exam-infomation column='2' nameExam="30/06/2024" labelExam="Ngày bắt đầu"></app-form-exam-infomation>
+                    <app-form-exam-infomation column='2' nameExam="Tiếng anh" labelExam="Môn Tiếng Anh"></app-form-exam-infomation>
+                    <app-form-exam-infomation column='2' nameExam="_ _" labelExam="Ngày công bố kết quả"></app-form-exam-infomation>
+                </app-information-exam>
+                
+                <app-table column='2'  [data]="data" [columnDefinitions]="dataColumnnames">></app-table>
+            </app-containerdetails>
+        </div>
+    </div>
+    <app-loading-page *ngIf="isLoading"></app-loading-page>
+    <app-modal #modal></app-modal>
+</div>
