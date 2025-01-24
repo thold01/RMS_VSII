@@ -4,6 +4,7 @@
   class="input"
   [tuiTextfieldCleaner]="true"
   [(ngModel)]="value"
+  tuiTextfieldSize="s"
 >
-  <input placeholder="Nhập tên kỳ thi" tuiTextfieldLegacy />
+  <input [placeholder]="placeholder" tuiTextfieldLegacy />
 </tui-input>

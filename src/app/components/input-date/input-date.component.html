@@ -1,10 +1,5 @@
-<form [formGroup]="testForm" [tuiTextfieldCleaner]="true">
-  <tui-input-date
-    class="w-[214px] h-[44px]"
-    formControlName="testValue"
-    tuiUnfinishedValidator="Finish filling the field"
-  >
-    Từ ngày
+<form [formGroup]="testForm">
+  <tui-input-date formControlName="testValue" tuiTextfieldSize="s">
+    {{ nameDate }}
   </tui-input-date>
-  <tui-error formControlName="testValue" [error]="[] | tuiFieldError | async" />
 </form>

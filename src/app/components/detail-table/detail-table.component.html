@@ -1,6 +1,8 @@
-<div class="grid grid-cols-2 gap-4 p-4 bg-gray-50 rounded-lg">
+<div class="grid grid-cols-2 gap-4 p-4 rounded-lg">
   <div class="bg-white shadow-md rounded-lg p-4">
-    <h2 class="text-lg font-bold mb-4">Thông tin đợt thi</h2>
+    <h2 class="text-lg font-bold border-b border-b-[1px] border-b-[#ccc] mb-4">
+      Thông tin đợt thi
+    </h2>
     <div class="grid grid-cols-2 gap-4">
       <div *ngFor="let group of infoData" class="space-y-2">
         <div *ngFor="let item of group">
@@ -11,8 +13,10 @@
     </div>
   </div>
 
-  <div class="bg-white shadow-md rounded-lg p-4">
-    <h2 class="text-lg font-bold mb-4">Danh sách lãnh đạo</h2>
+  <div class="detail-table bg-white shadow-md rounded-lg p-4">
+    <h2 class="text-lg font-bold border-b border-b-[1px] border-b-[#ccc] mb-4">
+      Danh sách lãnh đạo
+    </h2>
     <div class="overflow-auto max-h-72 tui-scrollbar">
       <table class="w-full border-collapse">
         <thead>

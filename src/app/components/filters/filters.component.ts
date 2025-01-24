@@ -7,7 +7,8 @@ import { TuiFieldErrorPipe, TuiItemsWithMore, TuiUnfinishedValidator } from '@ta
 import { TuiSearch } from '@taiga-ui/layout';
 import { TuiInputDateModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 import InputDateComponent from '../input-date/input-date.component';
-import DropdownButtonComponent from '../dropdown-button/dropdown-button.component';
+import { DropDownComponent } from '../dropdown-button/dropdown-button.component';
+import { CustomButtonComponent } from "../custom-button/custom-button.component";
 import SearchInputComponent from '../search-input/search-input.component';
 
 @Component({
@@ -30,8 +31,9 @@ import SearchInputComponent from '../search-input/search-input.component';
     TuiTextfieldControllerModule,
     TuiUnfinishedValidator,
     InputDateComponent,
-    DropdownButtonComponent,
-    SearchInputComponent
+    CustomButtonComponent,
+    SearchInputComponent,
+    DropDownComponent
   ],
   templateUrl: './filters.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,6 +48,13 @@ export default class FiltersComponent {
 
   protected readonly form = new FormGroup({ filters: this.filters });
   protected readonly controls = EMPTY_QUERY;
+
+  dataSelect1 = [
+    { value: 'item1', label: 'Tất cả trạng thái', selected: false },
+    { value: 'item2', label: 'Chưa bắt đầu', selected: false },
+    { value: 'item3', label: 'Đang thực hiện', selected: false },
+    { value: 'item4', label: 'Đã hoàn thành', selected: false }
+  ]
   onDateSelected(index: number, date: TuiDay): void {
     console.log(`Ngày được chọn ở filter ${index}:`, date);
   }

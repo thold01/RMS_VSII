@@ -1,13 +1,16 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgForOf } from '@angular/common';
-import { TuiScrollbar } from '@taiga-ui/core';
+import { TuiIcon, TuiScrollbar } from '@taiga-ui/core';
 import { DetailTableComponent } from 'src/app/components/detail-table/detail-table.component';
 import BreadcrumbComponent from 'src/app/components/breadcrumb/breadcrumb.component';
+import { Router } from '@angular/router';
+import { ModalComponent } from 'src/app/components/modal/modal.component';
 
 @Component({
   standalone: true,
   selector: 'app-chi-tiet-ky-thi',
-  imports: [NgForOf, TuiScrollbar, DetailTableComponent, BreadcrumbComponent],
+  imports: [NgForOf, TuiScrollbar,
+    DetailTableComponent, BreadcrumbComponent, TuiIcon, ModalComponent],
   templateUrl: './chi-tiet-ky-thi.component.html',
   styleUrls: ['./chi-tiet-ky-thi.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,6 +40,15 @@ export class ChiTietKyThiComponent {
   ];
 
   tableColumns = ['STT', 'Họ và tên', 'Đơn vị ứng tuyển'];
+  isLoading: boolean = false;
+  constructor(private router: Router) { }
+  onClick() {
+    this.isLoading = true
+    setTimeout(() => {
+      this.router.navigate(['/']);
+      this.isLoading = false;
+    }, 2000);
+  }
 }
 
 

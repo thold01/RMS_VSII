@@ -1,50 +1,42 @@
-<div>
-  <div>
+<div class="bg-[#efefef] h-full">
+  <div class="px-10 pt-5">
     <app-breadcrumb></app-breadcrumb>
-    <!-- Title -->
-    <div class="flex justify-between items-center">
-      <h1 class="text-lg font-semibold text-gray-900">
-        Thông tin chi tiết kỳ thi
-      </h1>
+
+    <div class="flex justify-between items-center mt-4">
+      <div class="flex items-center">
+        <tui-icon icon="@tui.chevron-left" size="s"></tui-icon>
+        <h6 class="text-[24px] font-normal text-[#333333]">
+          Thông tin chi tiết kì thi
+        </h6>
+      </div>
       <button
-        type="button"
-        class="px-6 py-2 text-white bg-teal-600 rounded-md hover:bg-teal-700"
+        (click)="modal.open()"
+        class="bg-[#006B68] rounded-md px-4 py-2 text-white text-[16px] font-medium"
       >
-        Bắt đầu thi
+        Tham gia
       </button>
     </div>
-
-    <!-- Details -->
-    <div class="flex items-center space-x-4">
-      <!-- Icon and Status -->
-      <div class="flex items-center space-x-2">
-        <div
-          class="w-12 h-12 flex items-center justify-center bg-teal-100 rounded-full"
-        >
-          <img
-            src="https://via.placeholder.com/24"
-            alt="Icon"
-            class="w-6 h-6"
-          />
-        </div>
-        <div>
-          <span
-            class="px-2 py-1 text-sm text-teal-700 bg-teal-100 rounded-full"
-          >
+    <!-- Title -->
+    <div class="flex items-center mt-4">
+      <img src="../../../assets/images/DocumentText.png" />
+      <div class="ml-2">
+        <div class="inline-flex px-2 items-center bg-[#0000001A] rounded-xl">
+          <input type="radio" />
+          <p class="text-[14px] font-medium text-[#333333] ml-1">
             Chưa bắt đầu
-          </span>
+          </p>
         </div>
+        <h4 class="text-[20px] font-normal mt-1">Thí sinh ngoài BIDV</h4>
       </div>
-
-      <!-- Text -->
-      <div class="text-gray-700 text-sm">Thí sinh thi ngoài BIDV</div>
+    </div>
+    <div class="mt-12">
+      <app-detail-table
+        [infoData]="infoData"
+        [tableData]="tableData"
+        [tableColumns]="tableColumns"
+      ></app-detail-table>
     </div>
   </div>
-  <div>
-    <app-detail-table
-      [infoData]="infoData"
-      [tableData]="tableData"
-      [tableColumns]="tableColumns"
-    ></app-detail-table>
-  </div>
+  <!-- <app-loading-page *ngIf="isLoading"></app-loading-page> -->
+  <app-modal #modal></app-modal>
 </div>

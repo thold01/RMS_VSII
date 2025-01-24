@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TuiDay } from '@taiga-ui/cdk';
 import { TuiError } from '@taiga-ui/core';
@@ -25,16 +25,19 @@ import {
   templateUrl: './input-date.component.html',
   styleUrls: ['./input-date.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export default class InputDateComponent {
-  @Input() control!: FormControl; // Nhận FormControl từ bên ngoài.
+  selectedDate: string = '';
+  @Input() nameDate: string = ''
+  testForm = new FormGroup({
+    testValue: new FormControl(null),
+  });
   @Output() dateChange = new EventEmitter<TuiDay>(); // Truyền sự kiện khi ngày thay đổi.
   onDateChange(value: TuiDay | null): void {
     if (value) {
       this.dateChange.emit(value); // Phát sự kiện khi giá trị thay đổi.
     }
   }
-  protected readonly testForm = new FormGroup({
-    testValue: new FormControl(new TuiDay(2017, 0, 15)),
-  });
+
 }

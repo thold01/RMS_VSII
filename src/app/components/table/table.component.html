@@ -46,19 +46,21 @@
       <td tuiTd>{{ item.doi_tuong_thi }}</td>
       <td tuiTd>
         <span
-          class="border-solid border-[#000000] border-opacity-[20%] rounded-lg border-1"
+          class="border-solid p-2 border-[#000000] border-opacity-[20%] rounded-lg border-1"
         >
           {{ item.vi_tri_thi }}
         </span>
       </td>
       <td tuiTd>
         <span
-          class="border-solid border-[#000000] border-opacity-[20%] rounded-lg border-1"
+          class="border-solid p-2 border-[#000000] border-opacity-[20%] rounded-lg border-1"
         >
           {{ item.mon_thi_nghiep_vu }}
         </span>
       </td>
-      <button tuiButton>Tham gia</button>
+      <td tuiTd>
+        <app-buttons label="Tham gia"> </app-buttons>
+      </td>
     </tr>
   </tbody>
 </table>

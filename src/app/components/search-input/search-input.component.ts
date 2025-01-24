@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TuiHint, TuiTextfield } from '@taiga-ui/core';
 import { TuiInputModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
@@ -19,4 +19,5 @@ import { TuiInputModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 })
 export default class SearchInputComponent {
   protected value = '';
+  @Input() placeholder: string = '';
 }

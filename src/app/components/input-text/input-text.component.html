@@ -1,0 +1,17 @@
+<div
+  class="flex items-center border-[1px] border-gray-300 rounded-md py-1 px-2 group"
+>
+  <tui-icon
+    icon="@tui.search"
+    size="s"
+    class="logo mr-2 text-[#000000]"
+  ></tui-icon>
+  <input
+    [(ngModel)]="value"
+    [placeholder]="placeholder"
+    class="w-full outline-none text-[16px] group-focus:border-[#75CECB] group-focus:border-[#75CECB] transition-all"
+  />
+  <button *ngIf="value" (click)="clearValue()">
+    <img src="/assets/close.png" alt="Close" />
+  </button>
+</div>

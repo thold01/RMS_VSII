@@ -5,6 +5,7 @@ import { TuiTable } from '@taiga-ui/addon-table';
 import type { TuiContext, TuiStringHandler } from '@taiga-ui/cdk';
 import { TuiButton, TuiFormatNumberPipe, TuiTextfield } from '@taiga-ui/core';
 import { TuiButtonSelect, TuiDataListWrapper, TuiPagination } from '@taiga-ui/kit';
+import { CustomButtonComponent } from "../custom-button/custom-button.component";
 
 @Component({
   standalone: true,
@@ -20,6 +21,8 @@ import { TuiButtonSelect, TuiDataListWrapper, TuiPagination } from '@taiga-ui/ki
     TuiPagination,
     TuiTable,
     TuiTextfield,
+    CustomButtonComponent,
+    CustomButtonComponent,
   ],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],

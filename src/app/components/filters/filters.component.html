@@ -1,16 +1,29 @@
 <search tuiSearch>
   <form [formGroup]="form">
     <fieldset formArrayName="filters">
-      <div class="flex">
-        <app-search-input class="w-[337px] h-[44px]"></app-search-input>
+      <div class="flex justify-between w-full flex-nowrap">
+        <app-search-input class="w-[337px] h-[44px]"> </app-search-input>
         <app-dropdown-button
           class="w-[337px] h-[44px]"
-          *ngIf="isDropdownButtonVisible"
+          placehoder="Chọn trạng thái"
+          [isIcon]="true"
+          [data]="dataSelect1"
+          [isCheckBox]="true"
         ></app-dropdown-button>
-        <app-input-date class="w-[337px] h-[44px]"></app-input-date>
-        <app-input-date class="w-[337px] h-[44px]"></app-input-date>
+        <app-input-date
+          nameDate="Từ ngày"
+          class="w-[337px] h-[44px]"
+        ></app-input-date>
+        <app-input-date
+          nameDate="Đến ngày"
+          class="w-[337px] h-[44px]"
+        ></app-input-date>
+        <app-buttons
+          iconUrl="../../assets/images/IconSearch.png"
+          type="search"
+          label="Search"
+        ></app-buttons>
       </div>
-      <button tuiButton type="button">Search</button>
     </fieldset>
   </form>
 </search>
