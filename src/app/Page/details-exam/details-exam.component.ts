@@ -18,6 +18,7 @@ import { ModalComponent } from "../../components/modal/modal.component";
   templateUrl: './details-exam.component.html',
   styleUrls: ['./details-exam.component.scss']
 })
+
 export class DetailsExamComponent {
    data = [
      {stt:1,name:'Lê Anh Khuê',unit:'Chi nhánh Long Biên'},
@@ -40,5 +41,4 @@ export class DetailsExamComponent {
       this.isLoading = false;
     }, 2000);
    }
-   
 }

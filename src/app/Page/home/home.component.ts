@@ -7,13 +7,13 @@ import { ButtonsComponent } from "../../components/buttons/buttons.component";
 import { DropDownComponent } from "../../components/drop-down/drop-down.component";
 import { PaginationpageComponent } from "../../components/paginationpage/paginationpage.component";
 import { Router } from '@angular/router';
-
-
+import { NoDataMainComponent } from "../../components/no-data-main/no-data-main.component";
+import { LoadingPageComponent } from "../../components/loading-page/loading-page.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, InputTextComponent, TableComponent, InputdateComponent, ButtonsComponent, DropDownComponent, PaginationpageComponent],
+  imports: [CommonModule, InputTextComponent, TableComponent, InputdateComponent, ButtonsComponent, DropDownComponent, PaginationpageComponent, NoDataMainComponent, LoadingPageComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -105,9 +105,13 @@ export class HomeComponent {
     { field: 'location', header: 'Vị trí thi' },
     { field: 'subject', header: 'Môn thi' }
   ]
-  constructor(private router:Router) {}
-
-  onClick():void{
-    this.router.navigateByUrl('/details');
+  constructor(private router:Router){}
+  isLoading:boolean = false
+  handleEvent():void{
+    this.isLoading = true
+     setTimeout(() => {
+      this.router.navigate(['details']);
+      this.isLoading = false;
+    }, 2000);
   }
 }

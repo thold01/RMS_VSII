@@ -1,28 +1,39 @@
 <div class="px-8 py-5">
     <h1 class="text-[24px] text-[#333333] font-normal">Danh sách</h1>
     <div class="grid grid-cols-7 gap-3 items-center mt-[20px]">
-        <app-input-text pla="Nhập tên kỳ thi" class="col-span-2"/>
+        <app-input-text pla="Nhập tên kỳ thi" class="col-span-2" />
         <div class="col-span-2">
-            <app-drop-down placehoder="Chọn trạng thái" [isIcon]="true" [data]="dataSelect1" [isCheckBox]=true></app-drop-down>
+            <app-drop-down placehoder="Chọn trạng thái" [isIcon]="true" [data]="dataSelect1"
+                [isCheckBox]=true></app-drop-down>
         </div>
         <div class="">
-            <app-inputdate  nameDate="Từ ngày"></app-inputdate>
+            <app-inputdate nameDate="Từ ngày"></app-inputdate>
         </div>
         <div class="">
             <app-inputdate nameDate="Đến ngày"></app-inputdate>
         </div>
-        <div >
-           <button class="bg-[#006B68] text-white text-[16px] rounded-md px-3 py-2">Tìm kiếm</button>
+        <div>
+            <button class="bg-[#006B68] text-white text-[16px] rounded-md px-3 py-2">Tìm kiếm</button>
         </div>
     </div>
-    <div class="mt-10">
+    <div class="mt-10 flex items-center  gap-x-2">
         <h1 class="text-[20px] font-medium text-[#333333]">Danh sách kì thi</h1>
+        <h6 class="text-[14px] bg-[#ececec] rounded-lg px-3">{{data.length}}</h6>
     </div>
-    <app-table [onClickHandle]="onClick"  [data]="data" [columnDefinitions]="dataColumnName" [isCheckInput]="true"></app-table>
-    <div class="mt-[10px] flex justify-between">
-        <div></div>
-        <app-paginationpage class="ml-[150px]"></app-paginationpage>
-        
-        <app-drop-down class="" placehoder="10/Trang"  [data]="dataSelect2"></app-drop-down>
+    <div *ngIf="data.length > 0;else noDataTemplate">
+        <app-table (EvenButton)="handleEvent()" [data]="data" [columnDefinitions]="dataColumnName"
+            [isCheckInput]="true"></app-table>
+        <div class="mt-[10px] flex justify-between">
+            <div></div>
+            <app-paginationpage class="ml-[150px]"></app-paginationpage>
+
+            <app-drop-down class="" placehoder="10/Trang" [data]="dataSelect2"></app-drop-down>
+        </div>
     </div>
+    <ng-template #noDataTemplate>
+
+        <app-no-data-main></app-no-data-main>
+    </ng-template>
+
+    <app-loading-page *ngIf="isLoading"></app-loading-page>
 </div>

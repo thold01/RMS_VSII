@@ -15,7 +15,7 @@
             <td *ngFor="let column of columns" class="table-cell">
                 {{ item[column.field] }}
               </td>
-            <td class="table-cell"><app-buttons (click)="onClickHandle()"   nameButton="Tham gia" *ngIf="isCheckInput"></app-buttons></td>
+            <td class="table-cell"><app-buttons (click)="senData()" nameButton="Tham gia" *ngIf="isCheckInput"></app-buttons></td>
         </tr>
     </tbody>
 

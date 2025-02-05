@@ -6,9 +6,6 @@ import { TuiButton } from '@taiga-ui/core';
 import { TuiDay } from '@taiga-ui/cdk/date-time';
 import { Input } from '@angular/core';
 
-
-
-
 @Component({
   selector: 'app-inputdate',
   standalone: true,
@@ -20,7 +17,7 @@ import { Input } from '@angular/core';
 })
 export class InputdateComponent {
   selectedDate: string = '';  // Biến để lưu giá trị ngày
-   @Input() nameDate:string = ''
+  @Input() nameDate:string = ''
   testForm = new FormGroup({
     testValue: new FormControl(null),
 });

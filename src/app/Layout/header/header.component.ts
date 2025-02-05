@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit {
   currentRoute: string = '';
   users = [
-    { userId: '123', name: 'Hoàng Văn Thuận' }
+    { userId: '123456', name: 'Hoàng Văn Thuận' }
   ];
 
   private routeSub: Subscription | any
