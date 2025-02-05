@@ -1,11 +1,12 @@
 import { AsyncPipe, NgForOf } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TuiTable } from '@taiga-ui/addon-table';
 import type { TuiContext, TuiStringHandler } from '@taiga-ui/cdk';
 import { TuiButton, TuiFormatNumberPipe, TuiTextfield } from '@taiga-ui/core';
 import { TuiButtonSelect, TuiDataListWrapper, TuiPagination } from '@taiga-ui/kit';
 import { CustomButtonComponent } from "../custom-button/custom-button.component";
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -29,6 +30,7 @@ import { CustomButtonComponent } from "../custom-button/custom-button.component"
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TableComponent {
+  constructor(@Inject(Router) private router: Router) {}
   protected readonly data = Array.from({ length: 10 }, (_, index) => ({
     ten_ky_thi: `Kỳ thi toàn quốc ${index + 1}`,
     hinh_thuc_thi: 'Thi có tổ chức',
@@ -43,6 +45,16 @@ export default class TableComponent {
   protected readonly items = [10, 50, 100];
   protected readonly states = ['Đang mở', 'Đã kết thúc', 'Sắp mở'];
   protected filterState = '';
+
+  joinTest(item: any) {
+    if (!item) {
+      // Nếu không có kỳ thi nào, chuyển hướng sang trang no-data
+      this.router.navigate(['/no-data']);
+    } else {
+      // Nếu có kỳ thi, thực hiện logic tham gia
+      console.log('Tham gia kỳ thi:', item);
+    }
+  }
 
   protected readonly content: TuiStringHandler<TuiContext<number>> = ({ $implicit }) =>
     `${$implicit} items per page`;

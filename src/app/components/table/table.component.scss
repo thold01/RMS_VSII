@@ -1,8 +1,3 @@
-[tuiAppearance][data-appearance='primary'] {
-  --t-bg    : #006B68;
-  background: #006B68;
-  color     : var(--tui-text-primary-on-accent-1);
-}
 
 
 [_nghost-ng-c4079261847] {
@@ -26,4 +21,19 @@
 
 [_nghost-ng-c3592356037]:last-child {
   border-right: none;
+}
+
+::ng-deep [tuiAppearance][data-appearance='primary'] {
+  --t-bg: white;
+  background: var(--t-bg);
+  color: black;
+  border: 2px solid #006B68;
+}
+
+::ng-deep [tuiAppearance][data-appearance='flat'] {
+  color: black;
+}
+
+::ng-deep [data-appearance="primary"]:hover {
+  background-color: inherit !important; 
 }
