@@ -1,42 +1,23 @@
-<div class="grid grid-cols-2 gap-4 p-4 rounded-lg">
-  <div class="bg-white shadow-md rounded-lg p-4">
-    <h2 class="text-lg font-bold border-b border-b-[1px] border-b-[#ccc] mb-4">
-      Thông tin đợt thi
-    </h2>
-    <div class="grid grid-cols-2 gap-4">
-      <div *ngFor="let group of infoData" class="space-y-2">
-        <div *ngFor="let item of group">
-          <p class="text-gray-500">{{ item.label }}</p>
-          <p class="font-medium">{{ item.value }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="detail-table bg-white shadow-md rounded-lg p-4">
-    <h2 class="text-lg font-bold border-b border-b-[1px] border-b-[#ccc] mb-4">
-      Danh sách lãnh đạo
-    </h2>
-    <div class="overflow-auto max-h-72 tui-scrollbar">
-      <table class="w-full border-collapse">
-        <thead>
-          <tr class="border-b border-gray-200">
-            <th *ngFor="let column of tableColumns" class="text-left p-2">
-              {{ column }}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            *ngFor="let row of tableData"
-            class="border-b border-gray-100 hover:bg-gray-50"
-          >
-            <td *ngFor="let key of tableColumns" class="p-2">
-              {{ row[key] }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="detail-table bg-white shadow-md rounded-lg p-4">
+  <h2 class="text-lg font-bold border-b border-b-[1px] border-b-[#ccc] mb-4">
+    Danh sách lãnh đạo
+  </h2>
+  <div class="overflow-auto max-h-72 tui-scrollbar">
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="border-b border-gray-200">
+          <th *ngFor="let column of tableColumns" class="text-left p-2">
+            {{ column }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of tableData" class="border-b border-gray-100 hover:bg-gray-50">
+          <td *ngFor="let key of tableColumns" class="p-2">
+            {{ row[key] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

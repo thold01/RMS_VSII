@@ -1,13 +1,21 @@
 <div class="px-[32px] w-full">
   <h2 class="my-4">Danh sách</h2>
-  <app-filters></app-filters>
-  <div class="my-8">
+  <app-filters (searchEvent)="filterData($event)"></app-filters>
+  <div class="my-8 bg-[#FFFFFF] p-8 rounded-[8px]">
     <div class="flex my-4">
       <h2 class="mr-2">Danh sách kỳ thi</h2>
       <tui-badge class="badge text-[#FFF] bg-[#ccc] mr-auto"> 100 </tui-badge>
     </div>
-    <div class="w-full"> 
-      <app-table></app-table>
+    <div class="w-full">
+      <div *ngIf="data.length > 0; else noDataTemplate">
+        <app-table [headers]="data_headers" [data]="filteredData" (joinTestEvent)="handleJoinTest($event)"></app-table>
+        <app-pagination></app-pagination>
+      </div>
+
+      <ng-template #noDataTemplate>
+        <app-no-data></app-no-data>
+      </ng-template>
+
     </div>
   </div>
 </div>

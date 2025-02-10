@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import  FiltersComponent  from "../../components/filters/filters.component";
+import  FiltersComponent  from "../../layouts/filters/filters.component";
 import { TuiBadge } from '@taiga-ui/kit';
 
 

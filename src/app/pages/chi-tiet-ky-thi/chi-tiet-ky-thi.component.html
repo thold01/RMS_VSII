@@ -9,10 +9,7 @@
           Thông tin chi tiết kì thi
         </h6>
       </div>
-      <button
-        (click)="modal.open()"
-        class="bg-[#006B68] rounded-md px-4 py-2 text-white text-[16px] font-medium"
-      >
+      <button (click)="modal.open()" class="bg-[#006B68] rounded-md px-4 py-2 text-white text-[16px] font-medium">
         Tham gia
       </button>
     </div>
@@ -30,11 +27,19 @@
       </div>
     </div>
     <div class="mt-12">
-      <app-detail-table
-        [infoData]="infoData"
-        [tableData]="tableData"
-        [tableColumns]="tableColumns"
-      ></app-detail-table>
+      <div class="grid grid-cols-2 gap-4 p-4 rounded-lg">
+        <div class="bg-white rounded-lg p-4">
+          <h2 class="text-lg font-bold border-b border-b-[#ccc] mb-4">
+            Thông tin đợt thi
+          </h2>
+          <div class="">
+            <app-detail-exam [infoData]="selectedProduct"></app-detail-exam>
+          </div>
+        </div>
+        <app-detail-table [tableData]="tableData" [tableColumns]="tableColumns"></app-detail-table>
+      </div>
+      <!-- <app-detail-table [infoData]="selectedProduct" [tableData]="tableData" [headers]="headers"
+        [tableColumns]="tableColumns"></app-detail-table> -->
     </div>
   </div>
   <!-- <app-loading-page *ngIf="isLoading"></app-loading-page> -->

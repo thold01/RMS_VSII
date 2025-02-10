@@ -1,10 +1,4 @@
-<tui-input
-  tuiHintDirection="bottom-right"
-  tuiTextfieldIconLeft="@tui.search"
-  class="input"
-  [tuiTextfieldCleaner]="true"
-  [(ngModel)]="value"
-  tuiTextfieldSize="s"
->
-  <input [placeholder]="placeholder" tuiTextfieldLegacy />
+<tui-input tuiHintDirection="bottom-right" tuiTextfieldIconLeft="@tui.search" class="input" [tuiTextfieldCleaner]="true"
+  [(ngModel)]="value" tuiTextfieldSize="s" (input)="onSearch()" >
+  <input [placeholder]="placeholder" tuiTextfieldLegacy class="h-full" />
 </tui-input>

@@ -4,10 +4,10 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { TuiIcon, TuiRoot } from '@taiga-ui/core';
 import { ErrorPageComponent } from './pages/not-found/not-found.component';
 import { LoginPageComponent } from './pages/login/login.component';
-import FiltersComponent from './components/filters/filters.component';
+import FiltersComponent from './layouts/filters/filters.component';
 import TableComponent from './components/table/table.component';
-import { MenuComponent } from "./components/menu/menu.component";
-import { HeaderComponent } from "./components/header/header.component";
+import { HeaderComponent } from './layouts/header/header.component';
+import { MenuComponent } from './layouts/menu/menu.component';
 @Component({
   selector: 'app-root',
   standalone: true,

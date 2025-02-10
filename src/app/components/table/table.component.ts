@@ -1,12 +1,17 @@
 import { AsyncPipe, NgForOf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  Output,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TuiTable } from '@taiga-ui/addon-table';
-import type { TuiContext, TuiStringHandler } from '@taiga-ui/cdk';
 import { TuiButton, TuiFormatNumberPipe, TuiTextfield } from '@taiga-ui/core';
-import { TuiButtonSelect, TuiDataListWrapper, TuiPagination } from '@taiga-ui/kit';
-import { CustomButtonComponent } from "../custom-button/custom-button.component";
-import { Router } from '@angular/router';
+import { TuiButtonSelect } from '@taiga-ui/kit';
+import { CustomButtonComponent } from '../custom-button/custom-button.component';
 
 @Component({
   standalone: true,
@@ -17,9 +22,7 @@ import { Router } from '@angular/router';
     NgForOf,
     TuiButton,
     TuiButtonSelect,
-    TuiDataListWrapper,
     TuiFormatNumberPipe,
-    TuiPagination,
     TuiTable,
     TuiTextfield,
     CustomButtonComponent,
@@ -30,32 +33,11 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TableComponent {
-  constructor(@Inject(Router) private router: Router) {}
-  protected readonly data = Array.from({ length: 10 }, (_, index) => ({
-    ten_ky_thi: `Kỳ thi toàn quốc ${index + 1}`,
-    hinh_thuc_thi: 'Thi có tổ chức',
-    doi_tuong_thi: 'Ngoài hệ thống BIDV',
-    vi_tri_thi: 'Chuyên viên khảo thí',
-    mon_thi_nghiep_vu: 'Chuyên viên khảo thí',
-  }));
-
-  protected index = 0;
-  protected length = 20;
-  protected size = 10;
-  protected readonly items = [10, 50, 100];
-  protected readonly states = ['Đang mở', 'Đã kết thúc', 'Sắp mở'];
-  protected filterState = '';
+  @Input() data: any[] = []; // Nhận danh sách dữ liệu từ component cha
+  @Input() headers: string[] = [];
+  @Output() joinTestEvent = new EventEmitter<any>(); // Phát sự kiện khi nhấn nút "Tham gia"
 
   joinTest(item: any) {
-    if (!item) {
-      // Nếu không có kỳ thi nào, chuyển hướng sang trang no-data
-      this.router.navigate(['/no-data']);
-    } else {
-      // Nếu có kỳ thi, thực hiện logic tham gia
-      console.log('Tham gia kỳ thi:', item);
-    }
+    this.joinTestEvent.emit(item); // Gửi dữ liệu ra component cha
   }
-
-  protected readonly content: TuiStringHandler<TuiContext<number>> = ({ $implicit }) =>
-    `${$implicit} items per page`;
 }

@@ -1,0 +1,13 @@
+<search tuiSearch>
+  <form [formGroup]="form">
+    <div class="flex gap-4">
+      <app-search-input class=" w-1/4" placeholder="thi sinh ngoai BIDV" (searchEvent)="onSearch($event)">
+      </app-search-input>
+      <app-dropdown-button class=" w-1/4" placehoder="Chọn trạng thái" [isIcon]="true" [data]="dataSelect1"
+        [isCheckBox]="true"></app-dropdown-button>
+      <app-input-date nameDate="Từ ngày" class=" w-1/6"></app-input-date>
+      <app-input-date nameDate="Đến ngày" class=" w-1/6"></app-input-date>
+      <app-buttons iconUrl="../../assets/images/IconSearch.png" type="search" label="Tìm kiếm"></app-buttons>
+    </div>
+  </form>
+</search>

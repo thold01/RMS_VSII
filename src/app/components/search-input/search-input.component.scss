@@ -2,3 +2,25 @@
   inline-size: 20rem;
   direction  : ltr;
 }
+
+input::placeholder {
+  opacity: 1 !important;
+}
+
+// --tui-height 
+
+// input ng-untouched ng-pristine 
+::ng-deep .ng-valid{
+  height: 100%;
+}
+
+// ._focused {
+//   height: 50px;
+//   /* Thay đổi chiều cao theo ý muốn */
+// }
+
+div[data-appearance="textfield"] {
+  height: 200px;
+  /* Điều chỉnh chiều cao */
+}
+

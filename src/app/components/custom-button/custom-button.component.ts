@@ -13,5 +13,4 @@ export class CustomButtonComponent {
   @Input() label: string = '';
   @Input() iconUrl: string = '';
   @Input() disabled: boolean = false;
-
 }

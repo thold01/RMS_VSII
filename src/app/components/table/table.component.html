@@ -1,41 +1,9 @@
-<table
-  tuiTable
-  [style.width.rem]="36"
-  class="w-full text-left border-t border-b border-1 border-gray-300"
->
-  <caption tuiCaption>
-    <div class="relative">
-      <tui-pagination
-        [length]="length"
-        [style.float]="'center'"
-        [(index)]="index"
-      />
-      <button
-        class="absolute right-0"
-        appearance="flat"
-        tuiButton
-        tuiButtonSelect
-        type="button"
-        [(ngModel)]="size"
-      >
-        {{ index * size + 1 }}-{{ (index + 1) * size }} rows
-        <tui-data-list-wrapper
-          *tuiTextfieldDropdown
-          [itemContent]="content"
-          [items]="items"
-        />
-      </button>
-    </div>
-  </caption>
+<table tuiTable [style.width.rem]="36" class="w-full text-left border-t border-b border-1 border-gray-300">
   <thead>
-    <tr tuiThGroup>
-      <th tuiTh>STT</th>
-      <th tuiTh>Tên kỳ thi</th>
-      <th tuiTh>Hình thức thi</th>
-      <th tuiTh>Đối tượng thi</th>
-      <th tuiTh>Vị trí thi</th>
-      <th tuiTh>Môn thi nghiệp vụ</th>
-      <th tuiTh></th>
+    <tr tuiThGroup class="border-b border-gray-300 w-32">
+      <th *ngFor="let header of headers" tuiTh>
+        <span class="mx-auto w-16 border-b-2 border-red-600"></span>{{ header }}
+      </th>
     </tr>
   </thead>
   <tbody tuiTbody>
@@ -45,21 +13,17 @@
       <td tuiTd>{{ item.hinh_thuc_thi }}</td>
       <td tuiTd>{{ item.doi_tuong_thi }}</td>
       <td tuiTd>
-        <span
-          class="border-solid p-2 border-[#000000] border-opacity-[20%] rounded-lg border-1"
-        >
+        <span class="border-solid px-1 border-[#000000] border-opacity-[20%] rounded-sm  border-1">
           {{ item.vi_tri_thi }}
         </span>
       </td>
       <td tuiTd>
-        <span
-          class="border-solid p-2 border-[#000000] border-opacity-[20%] rounded-lg border-1"
-        >
+        <span class="border-solid px-1 border-[#000000] border-opacity-[20%] rounded-sm border-1">
           {{ item.mon_thi_nghiep_vu }}
         </span>
       </td>
       <td tuiTd>
-        <app-buttons label="Tham gia" (click)="joinTest(item)" > </app-buttons>
+        <app-buttons label="Tham gia" (click)="joinTest(item)"> </app-buttons>
       </td>
     </tr>
   </tbody>

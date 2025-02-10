@@ -1,0 +1,15 @@
+<div class="grid grid-cols-2 gap-x-8 border-t border-gray-300 pt-2">
+    <!-- Cột trái -->
+    <div>
+        <app-detail-exam-item *ngFor="let item of leftColumn" [label]="item.label">
+            {{ item.value }}
+        </app-detail-exam-item>
+    </div>
+
+    <!-- Cột phải -->
+    <div>
+        <app-detail-exam-item *ngFor="let item of rightColumn" [label]="item.label">
+            {{ item.value }}
+        </app-detail-exam-item>
+    </div>
+</div>

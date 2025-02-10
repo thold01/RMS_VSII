@@ -10,11 +10,16 @@ import { TuiScrollbar } from '@taiga-ui/core';
   styleUrls: ['./detail-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class DetailTableComponent {
-  @Input() infoData: { label: string; value: string }[][] = [];
   @Input() tableData: { [key: string]: string }[] = [];
   @Input() tableColumns: string[] = [];
+
+  @Input() infoData: any = {};
+
+  arrInfor: [string, any][] = [];
+  constructor() {}
+  ngOnInit() {
+    this.arrInfor = Object.entries(this.infoData);
+    console.log('infoData', this.arrInfor);
+  }
 }
-
-
