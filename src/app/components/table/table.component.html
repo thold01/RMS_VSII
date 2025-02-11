@@ -1,6 +1,7 @@
-<table tuiTable [style.width.rem]="36" class="w-full text-left border-t border-b border-1 border-gray-300">
+<table tuiTable [style.width.rem]="36"
+  class="w-full border-collapse text-left border-t border-b border-1 border-gray-300">
   <thead>
-    <tr tuiThGroup class="border-b border-gray-300 w-32">
+    <tr tuiThGroup class="header-table border-b border-gray-300 w-32">
       <th *ngFor="let header of headers" tuiTh>
         <span class="mx-auto w-16 border-b-2 border-red-600"></span>{{ header }}
       </th>

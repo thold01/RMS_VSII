@@ -4,10 +4,10 @@ import TableComponent from '../../components/table/table.component';
 import FiltersComponent from '../../layouts/filters/filters.component';
 import { TuiBadge } from '@taiga-ui/kit';
 import { Router } from '@angular/router';
-import { PaginationComponent } from 'src/app/components/pagination/pagination.component';
 import { Subject } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { NoDataComponent } from 'src/app/layouts/no-data/no-data.component';
+import PaginationComponent from 'src/app/components/pagination/pagination.component';
 
 @Component({
   selector: 'ky-thi',

@@ -1,7 +1,7 @@
-<div class="relative">
-    <tui-pagination [length]="length" [style.float]="'center'" [(index)]="index" />
-    <button class="absolute right-0" appearance="flat" tuiButton tuiButtonSelect type="button" (click)="onSizeButtonClick()">
-        {{ index * size + 1 }}-{{ (index + 1) * size }} rows
-        <tui-data-list-wrapper *tuiTextfieldDropdown [itemContent]="content" [items]="items" />
-    </button>
-</div>
+<div></div>
+<tui-pagination [length]="length" [style.float]="'center'" [(index)]="index" />
+<button class="b-pagination text-[#333333] font-normal" size="m" tuiChevron appearance="outline" tuiButton tuiButtonSelect type="button"
+    [(ngModel)]="size">
+    {{size}}/Trang
+    <tui-data-list-wrapper *tuiTextfieldDropdown [itemContent]="content" [items]="items" />
+</button>

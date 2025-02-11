@@ -1,0 +1,27 @@
+::ng-deep tui-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+::ng-deep tui-pagination button {
+  border: var(--border-default);
+  border-radius: 6px;
+  padding: 6px 12px;
+  background: #f8f9fa;
+  color: #000;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+::ng-deep tui-pagination button:hover {
+  background: #e9ecef;
+}
+
+::ng-deep tui-pagination button[active] {
+  border: 1px solid #004d40;
+  background: white;
+  color: #004d40;
+}
+

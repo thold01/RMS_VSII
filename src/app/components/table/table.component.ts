@@ -33,7 +33,7 @@ import { CustomButtonComponent } from '../custom-button/custom-button.component'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TableComponent {
-  @Input() data: any[] = []; // Nhận danh sách dữ liệu từ component cha
+  @Input() data: any[] = []; 
   @Input() headers: string[] = [];
   @Output() joinTestEvent = new EventEmitter<any>(); // Phát sự kiện khi nhấn nút "Tham gia"
 

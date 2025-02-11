@@ -9,7 +9,11 @@
     <div class="w-full">
       <div *ngIf="data.length > 0; else noDataTemplate">
         <app-table [headers]="data_headers" [data]="filteredData" (joinTestEvent)="handleJoinTest($event)"></app-table>
-        <app-pagination></app-pagination>
+        <div class="pt-4 pb-4 flex w-full">
+          <div class="w-full">
+            <app-pagination class="flex items-center justify-between"></app-pagination>
+          </div>
+        </div>
       </div>
 
       <ng-template #noDataTemplate>

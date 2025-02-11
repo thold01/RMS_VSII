@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./custom-button.component.scss']
 })
 export class CustomButtonComponent {
-  @Input() type: 'search' | 'cancel' | 'join' | 'confirm' = 'confirm';
+  @Input() type: 'search' | 'cancel' | 'join' | 'confirm'|'pagination' = 'confirm';
   @Input() label: string = '';
   @Input() iconUrl: string = '';
   @Input() disabled: boolean = false;
