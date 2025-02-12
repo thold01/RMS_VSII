@@ -1,7 +1,8 @@
 <div></div>
-<tui-pagination [length]="length" [style.float]="'center'" [(index)]="index" />
-<button class="b-pagination text-[#333333] font-normal" size="m" tuiChevron appearance="outline" tuiButton tuiButtonSelect type="button"
-    [(ngModel)]="size">
+<tui-pagination [length]="length" [style.float]="'center'" [(index)]="index" (indexChange)="onPageChange($event)" />
+<button class="b-pagination text-[#333333] font-normal" size="m" tuiChevron appearance="outline" tuiButton
+    tuiButtonSelect type="button" [(ngModel)]="size">
     {{size}}/Trang
-    <tui-data-list-wrapper *tuiTextfieldDropdown [itemContent]="content" [items]="items" />
+    <tui-data-list-wrapper *tuiTextfieldDropdown tuiDropdownDirection="bottom" [itemContent]="content" [items]="items"
+        (itemClick)="onPageSizeChange($event)" />
 </button>

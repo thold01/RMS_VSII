@@ -29,14 +29,18 @@
     <div class="mt-12">
       <div class="grid grid-cols-2 gap-4 p-4 rounded-lg">
         <div class="bg-white rounded-lg p-4">
-          <h2 class="text-lg font-bold border-b border-b-[#ccc] mb-4">
-            Thông tin đợt thi
-          </h2>
-          <div class="">
+          <div class="border-b border-b-gray-400">
+            <h2 style="border-bottom: 1px solid #ccc" class="text-lg font-bold mb-4">
+              Thông tin đợt thi
+            </h2>
+          </div>
+          <div class="border-t border-t-red-200">
             <app-detail-exam [infoData]="selectedProduct"></app-detail-exam>
           </div>
         </div>
-        <app-detail-table [tableData]="tableData" [tableColumns]="tableColumns"></app-detail-table>
+        <div class="">
+          <app-detail-table [tableData]="tableData" [tableColumns]="tableColumns"></app-detail-table>
+        </div>
       </div>
       <!-- <app-detail-table [infoData]="selectedProduct" [tableData]="tableData" [headers]="headers"
         [tableColumns]="tableColumns"></app-detail-table> -->

@@ -11,7 +11,9 @@
         <app-table [headers]="data_headers" [data]="filteredData" (joinTestEvent)="handleJoinTest($event)"></app-table>
         <div class="pt-4 pb-4 flex w-full">
           <div class="w-full">
-            <app-pagination class="flex items-center justify-between"></app-pagination>
+            <app-pagination class="flex items-center justify-between" [length]="totalItems" [index]="currentPage"
+              [size]="pageSize" [items]="pageSizeOptions" (indexChange)="onPageChange($event)"
+              (sizeChange)="onPageSizeChange($event)"></app-pagination>
           </div>
         </div>
       </div>

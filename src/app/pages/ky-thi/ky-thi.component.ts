@@ -1,10 +1,11 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import TableComponent from '../../components/table/table.component';
 import FiltersComponent from '../../layouts/filters/filters.component';
 import { TuiBadge } from '@taiga-ui/kit';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { delay, of, Subject } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { NoDataComponent } from 'src/app/layouts/no-data/no-data.component';
 import PaginationComponent from 'src/app/components/pagination/pagination.component';
@@ -27,8 +28,15 @@ export class ChooseExamComponent {
   constructor(
     @Inject(Router) private router: Router,
     private dataService: DataService
-  ) {}
-
+  ) {
+    this.totalItems = 20;
+    this.fetchData();
+  }
+  ngOnChange() {
+    console.log('totalItems:', this.totalItems);
+    console.log('currentPage:', this.currentPage);
+    console.log('pageSize:', this.pageSize);
+  }
   data: KyThi[] = Array.from({ length: 10 }, (_, index) => ({
     id: index + 1,
     ten_ky_thi: `Kỳ thi toàn quốc ${index + 2023}`,
@@ -53,6 +61,45 @@ export class ChooseExamComponent {
     '',
   ];
 
+  private http = inject(HttpClient);
+
+  currentPage = 0; // Trang hiện tại (bắt đầu từ 0)
+  pageSize = 10; // Số dòng mỗi trang
+  totalItems = 0; // Tổng số items từ API
+  items: any[] = []; // Dữ liệu bảng
+
+  pageSizeOptions = [10, 50, 100]; // Các lựa chọn số dòng/trang
+
+  fetchData() {
+    // Giả lập API trả về danh sách item
+    const allData = Array.from({ length: this.totalItems }, (_, i) => ({
+      id: i + 1,
+      name: `Item ${i + 1}`,
+    }));
+
+    const start = this.currentPage * this.pageSize;
+    const end = start + this.pageSize;
+    const pageData = allData.slice(start, end);
+
+    of({ total: this.totalItems, data: pageData })
+      .pipe(delay(500))
+      .subscribe((response) => {
+        this.items = response.data;
+        console.log('data:', this.data);
+      });
+  }
+
+  onPageChange(newPage: number) {
+    this.currentPage = newPage;
+    this.fetchData();
+  }
+
+  onPageSizeChange(newSize: number) {
+    this.pageSize = newSize;
+    this.currentPage = 0; // Reset về trang đầu
+    this.fetchData();
+  }
+
   filteredData = [...this.data]; // Lưu danh sách lọc
   searchTerm: string = '';
 
@@ -60,7 +107,7 @@ export class ChooseExamComponent {
     this.searchTerm = searchValue;
     if (!this.data || this.data.length === 0) {
       this.filteredData = []; // Gán filteredData là mảng rỗng
-      return; // Kết thúc hàm
+      return;
     }
 
     this.filteredData = this.data.filter(
