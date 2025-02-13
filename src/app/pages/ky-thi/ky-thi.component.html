@@ -8,7 +8,10 @@
     </div>
     <div class="w-full">
       <div *ngIf="data.length > 0; else noDataTemplate">
-        <app-table [headers]="data_headers" [data]="filteredData" (joinTestEvent)="handleJoinTest($event)"></app-table>
+        <app-table [data]="filteredData" [columns]="columns" [actionTemplate]="actionTpl"></app-table>
+        <ng-template #actionTpl let-item>
+          <app-buttons label="Tham gia" [item]="item" (joinTestEvent)="handleJoinTest($event)"></app-buttons>
+        </ng-template>
         <div class="pt-4 pb-4 flex w-full">
           <div class="w-full">
             <app-pagination class="flex items-center justify-between" [length]="totalItems" [index]="currentPage"

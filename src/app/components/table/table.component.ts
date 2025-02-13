@@ -1,11 +1,13 @@
-import { AsyncPipe, NgForOf } from '@angular/common';
+import { AsyncPipe, CommonModule, NgForOf, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  ContentChild,
   EventEmitter,
   Inject,
   Input,
   Output,
+  TemplateRef,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TuiTable } from '@taiga-ui/addon-table';
@@ -19,7 +21,9 @@ import { CustomButtonComponent } from '../custom-button/custom-button.component'
   imports: [
     AsyncPipe,
     FormsModule,
+    CommonModule,
     NgForOf,
+    NgIf,
     TuiButton,
     TuiButtonSelect,
     TuiFormatNumberPipe,
@@ -33,11 +37,9 @@ import { CustomButtonComponent } from '../custom-button/custom-button.component'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TableComponent {
-  @Input() data: any[] = []; 
+  @Input() data: any[] = [];
   @Input() headers: string[] = [];
-  @Output() joinTestEvent = new EventEmitter<any>(); // Phát sự kiện khi nhấn nút "Tham gia"
-
-  joinTest(item: any) {
-    this.joinTestEvent.emit(item); // Gửi dữ liệu ra component cha
-  }
+  @Input() columns: { key: string; label: string; hasBorder?: boolean }[] = [];
+  @Input() actionTemplate?: TemplateRef<any>; // Template tùy chỉnh (VD: Button)
+  // @ContentChild('actionTemplate') actionTemplate!: TemplateRef<any>;
 }

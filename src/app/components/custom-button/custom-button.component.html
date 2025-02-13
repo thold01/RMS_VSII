@@ -6,7 +6,10 @@
     'border border-[#000000]-500 bg-white': type === 'confirm',
     'bg-[#006B68] text-[#FFFFFF]': type === 'search',
     'opacity-50 cursor-not-allowed': disabled
-  }" [disabled]="disabled">
+  }" 
+  [disabled]="disabled"
+  (click)="onClick()"
+  >
   <ng-container *ngIf="iconUrl">
     <img [src]="iconUrl" alt="icon" class="w-4 h-4 mr-2" />
   </ng-container>

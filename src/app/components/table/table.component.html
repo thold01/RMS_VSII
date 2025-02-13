@@ -2,29 +2,21 @@
   class="w-full border-collapse text-left border-t border-b border-1 border-gray-300">
   <thead>
     <tr tuiThGroup class="header-table border-b border-gray-300 w-32">
-      <th *ngFor="let header of headers" tuiTh>
-        <span class="mx-auto w-16 border-b-2 border-red-600"></span>{{ header }}
+      <th *ngFor="let column of columns" tuiTh>
+        <span class="mx-auto w-16 border-b-2 border-red-600"></span> {{ column.label }}
       </th>
+      <th tuiTh></th>
     </tr>
   </thead>
   <tbody tuiTbody>
-    <tr *ngFor="let item of data; let i = index">
-      <td tuiTd>{{ i + 1 }}</td>
-      <td tuiTd>{{ item.ten_ky_thi }}</td>
-      <td tuiTd>{{ item.hinh_thuc_thi }}</td>
-      <td tuiTd>{{ item.doi_tuong_thi }}</td>
-      <td tuiTd>
-        <span class="border-solid px-1 border-[#000000] border-opacity-[20%] rounded-sm  border-1">
-          {{ item.vi_tri_thi }}
-        </span>
+    <tr *ngFor="let item of data">
+      <td *ngFor="let column of columns" tuiTd [class.border]="column.hasBorder">
+        {{ item[column.key] }}
       </td>
-      <td tuiTd>
-        <span class="border-solid px-1 border-[#000000] border-opacity-[20%] rounded-sm border-1">
-          {{ item.mon_thi_nghiep_vu }}
-        </span>
-      </td>
-      <td tuiTd>
-        <app-buttons label="Tham gia" (click)="joinTest(item)"> </app-buttons>
+
+      <!-- Cột Action nếu có truyền vào -->
+      <td *ngIf="actionTemplate" tuiTd>
+        <ng-container *ngTemplateOutlet="actionTemplate; context: { $implicit: item } "></ng-container>
       </td>
     </tr>
   </tbody>
