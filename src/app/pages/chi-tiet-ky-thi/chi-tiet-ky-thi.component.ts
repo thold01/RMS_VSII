@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgForOf } from '@angular/common';
 import { TuiIcon, TuiScrollbar } from '@taiga-ui/core';
-import { DetailTableComponent } from 'src/app/components/detail-table/detail-table.component';
 import BreadcrumbComponent from 'src/app/components/breadcrumb/breadcrumb.component';
 import { Router } from '@angular/router';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
 import { DataService } from 'src/app/services/data.service';
 import { DetailExamComponent } from '../../layouts/detail-exam/detail-exam.component';
+import TableComponent from '../../components/table/table.component';
 
 @Component({
   standalone: true,
@@ -14,42 +14,58 @@ import { DetailExamComponent } from '../../layouts/detail-exam/detail-exam.compo
   imports: [
     NgForOf,
     TuiScrollbar,
-    DetailTableComponent,
     BreadcrumbComponent,
     TuiIcon,
     ModalComponent,
     DetailExamComponent,
+    TableComponent,
   ],
   templateUrl: './chi-tiet-ky-thi.component.html',
   styleUrls: ['./chi-tiet-ky-thi.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChiTietKyThiComponent {
+  columns = [
+    { key: 'id', label: 'STT', hasBorder: false },
+    { key: 'name', label: 'Họ và tên', hasBorder: false },
+    { key: 'application_unit', label: 'Đơn vị ứng tuyền', hasBorder: false },
+  ];
+
   tableData = [
     {
-      STT: '1',
-      'Họ và tên': 'Lê An Khuê',
-      'Đơn vị ứng tuyển': 'Chi nhánh Long Biên',
+      id: '1',
+      name: `Lê An Khuê`,
+      application_unit: 'Chi nhánh Long Biên',
     },
     {
-      STT: '2',
-      'Họ và tên': 'Trần Hải Nam',
-      'Đơn vị ứng tuyển': 'Chi nhánh Long Biên',
+      id: '2',
+      name: 'Trần Hải Nam',
+      application_unit: 'Chi nhánh Long Biên',
     },
     {
-      STT: '3',
-      'Họ và tên': 'Lương Nhật Trường',
-      'Đơn vị ứng tuyển': 'Chi nhánh Long Biên',
+      id: '3',
+      name: 'Lương Nhật Trường',
+      application_unit: 'Chi nhánh Long Biên',
     },
     {
-      STT: '4',
-      'Họ và tên': 'Trần Nguyên Minh Khôi',
-      'Đơn vị ứng tuyển': 'Chi nhánh Long Biên',
+      id: '4',
+      name: 'Trần Nguyên Minh Khôi',
+      application_unit: 'Chi nhánh Long Biên',
     },
     {
-      STT: '5',
-      'Họ và tên': 'Vũ Bảo Châu',
-      'Đơn vị ứng tuyển': 'Chi nhánh Long Biên',
+      id: '5',
+      name: 'Vũ Bảo Châu',
+      application_unit: 'Chi nhánh Long Biên',
+    },
+    {
+      id: '6',
+      name: 'Trần Nguyên Minh Khôi',
+      application_unit: 'Chi nhánh Long Biên',
+    },
+    {
+      id: '7',
+      name: 'Vũ Bảo Châu',
+      application_unit: 'Chi nhánh Long Biên',
     },
   ];
 

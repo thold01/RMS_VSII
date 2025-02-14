@@ -31,7 +31,7 @@ export class ChooseExamComponent {
     @Inject(Router) private router: Router,
     private dataService: DataService
   ) {
-    this.totalItems = 20;
+    this.totalItems = 51;
     this.fetchData();
   }
   ngOnChange() {
@@ -39,19 +39,20 @@ export class ChooseExamComponent {
     console.log('currentPage:', this.currentPage);
     console.log('pageSize:', this.pageSize);
   }
-  data: KyThi[] = Array.from({ length: 11 }, (_, index) => ({
-    id: index + 1,
-    ten_ky_thi: `Kỳ thi toàn quốc ${index + 2023}`,
-    hinh_thuc_thi: 'Thi có tổ chức',
-    loai_hinh_khao_thi: 'Khảo sát',
-    doi_tuong_thi: 'Ngoài hệ thống BIDV',
-    vi_tri_thi: 'Chuyên viên khảo thí',
-    mon_thi_nghiep_vu: 'Chuyên viên khảo thí',
-    don_vi_dau_moi: '--',
-    ngay_bat_dau: '30/06/2024',
-    mon_tieng_anh: 'Tiếng Anh',
-    ngay_cong_bo_ket_qua: '--',
-  }));
+  data: KyThi[] = [];
+  // data: KyThi[] = Array.from({ length: 11 }, (_, index) => ({
+  //   id: index + 1,
+  //   ten_ky_thi: `Kỳ thi toàn quốc ${index + 2023}`,
+  //   hinh_thuc_thi: 'Thi có tổ chức',
+  //   loai_hinh_khao_thi: 'Khảo sát',
+  //   doi_tuong_thi: 'Ngoài hệ thống BIDV',
+  //   vi_tri_thi: 'Chuyên viên khảo thí',
+  //   mon_thi_nghiep_vu: 'Chuyên viên khảo thí',
+  //   don_vi_dau_moi: '--',
+  //   ngay_bat_dau: '30/06/2024',
+  //   mon_tieng_anh: 'Tiếng Anh',
+  //   ngay_cong_bo_ket_qua: '--',
+  // }));
 
   columns = [
     { key: 'id', label: 'STT', hasBorder: false },
@@ -59,18 +60,8 @@ export class ChooseExamComponent {
     { key: 'hinh_thuc_thi', label: 'Hình Thức Thi', hasBorder: false },
     { key: 'doi_tuong_thi', label: 'Đối Tượng Thi', hasBorder: false },
     { key: 'vi_tri_thi', label: 'Vị Trí Thi', hasBorder: true },
-    { key: 'mon_thi_nghiep_vu', label: 'Môn Thi', hasBorder: true },
+    { key: 'mon_thi_nghiep_vu', label: 'Môn Thi nghiệp vụ', hasBorder: true },
   ];
-
-  // data_headers = [
-  //   'STT',
-  //   'Tên kỳ thi',
-  //   'Hình thức thi',
-  //   'Đối tượng thi',
-  //   'Vị trí thi',
-  //   'Môn thi nghiệp vụ',
-  //   '',
-  // ];
 
   private http = inject(HttpClient);
 
@@ -108,7 +99,7 @@ export class ChooseExamComponent {
           mon_tieng_anh: 'Tiếng Anh',
           ngay_cong_bo_ket_qua: '--',
         }));
-        this.items = response.data;
+        this.data = this.filteredData;
         console.log('data:', this.data);
       });
   }

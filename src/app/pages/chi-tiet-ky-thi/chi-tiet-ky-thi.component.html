@@ -39,7 +39,15 @@
           </div>
         </div>
         <div class="">
-          <app-detail-table [tableData]="tableData" [tableColumns]="tableColumns"></app-detail-table>
+          <div class="detail-table bg-white shadow-md rounded-lg p-4 h-full">
+            <h2 style="border-bottom: 1px solid #ccc" class="text-lg font-bold mb-4">
+              Danh sách lãnh đạo
+            </h2>
+            <div class="overflow-auto max-h-72 tui-scrollbar">
+              <app-table [data]="tableData" [columns]="columns"></app-table>
+            </div>
+          </div>
+          <!-- <app-detail-table [tableData]="tableData" [tableColumns]="tableColumns"></app-detail-table> -->
         </div>
       </div>
       <!-- <app-detail-table [infoData]="selectedProduct" [tableData]="tableData" [headers]="headers"
