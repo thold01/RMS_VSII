@@ -69,6 +69,11 @@ export class ChiTietKyThiComponent {
     },
   ];
 
+  breadcrumbItems = [
+    { caption: 'Danh sách kì thi', routerLink: '/' },
+    { caption: 'Chi tiết kì thi', routerLink: '/detail' },
+  ];
+
   constructor(private router: Router, private dataService: DataService) {
     this.dataService.getData().subscribe((data: any) => {
       this.selectedProduct = data; // Nhận dữ liệu

@@ -1,14 +1,38 @@
-<div class="bg-white p-4 shadow-md rounded-lg">
-    <div class="flex items-center">
-        <img src="assets/interview.png" class="h-20" />
-        <div class="ml-4">
-            <h2 class="text-lg font-bold">{{ candidate.name }}</h2>
-            <p>📜 {{ candidate.idCard }}</p>
-            <p>🏢 {{ candidate.branch }}</p>
-            <p>💼 {{ candidate.position }}</p>
+<div class="bg-white p-6 shadow-md rounded-lg">
+    <div class="relative w-full flex justify-center">
+        <img src="assets/images/infor_candidate/banner.png" class="w-full h-60 object-cover" />
+        <img src="assets/images/infor_candidate/IconPersonalInfo.png"
+            class="absolute left-1/2 transform -translate-x-1/2 bottom-[-20px] w-16 h-16 bg-[#ccc] p-2 border-4 border-white rounded-full shadow-md z-1" />
+    </div>
+    <h2 class="text-xl font-semibold text-center mt-16">{{ candidate.name }}</h2>
+    <div class="mt-6 space-y-4 flex items-center justify-around gap-8">
+        <div class="flex items-center gap-2">
+            <img src="assets/images/infor_candidate/IconPersonalInfo.png" class="w-6 h-6" />
+            <div>
+                <p class="text-gray-600 text-sm">Giâý tờ tuỳ thân</p>
+                <p class="font-medium text-gray-800"> {{ candidate.idCard }}</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <img src="assets/images/infor_candidate/IconBriefcase.png" />
+            <div>
+                <p class="text-gray-600 text-sm">Vị trí ứng tuyển</p>
+                <p class="font-medium text-gray-800"> {{ candidate.branch }}</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <img src="assets/images/infor_candidate/IconBank.png" />
+            <div>
+                <p class="text-gray-600 text-sm">Đơn vị ứng tuyển</p>
+                <p class="font-medium text-gray-800"> {{ candidate.position }}</p>
+            </div>
         </div>
     </div>
-    <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded" (click)="viewDetails.emit()">
-        Chi tiết hồ sơ
-    </button>
+
+    <p class="text-gray-500 text-center text-sm mt-4">Vui lòng đợi thí sinh xác nhận vào phỏng vấn.</p>
+    <div class="mt-6 flex justify-center">
+        <app-buttons (click)="viewDetails.emit()" type="confirm" label="Chi tiết hồ sơ"></app-buttons>
+    </div>
 </div>

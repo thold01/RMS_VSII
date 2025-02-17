@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TuiItem } from '@taiga-ui/cdk';
 import { TuiLink } from '@taiga-ui/core';
@@ -14,15 +14,5 @@ import { TuiBreadcrumbs } from '@taiga-ui/kit';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BreadcrumbComponent {
-  protected items = [
-    {
-      caption: 'Danh sách kì thi',
-      routerLink: '/',
-    },
-    {
-      caption: 'Chi tiết kì thi',
-      routerLink: '/detail',
-    }
-  ];
+  @Input() items: { caption: string; routerLink: string }[] = [];
 }
-

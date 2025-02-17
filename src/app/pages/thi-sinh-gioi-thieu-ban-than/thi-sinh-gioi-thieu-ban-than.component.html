@@ -1,16 +1,13 @@
 <div class="bg-[#efefef] h-full">
     <div class="px-10 pt-5">
-        <app-breadcrumb></app-breadcrumb>
+        <app-breadcrumb [items]="breadcrumbItems"></app-breadcrumb>
         <div class="flex-1 p-6">
-            <!-- <app-breadcrumbs [breadcrumbs]="['Chọn đợt thi', 'Phòng vấn']"></app-breadcrumbs> -->
 
-            <app-interview-card [candidate]="selectedCandidate" (viewDetails)="showDetails = true">
+            <app-interview-card [candidate]="selectedCandidate" (viewDetails)="handleShowDetails()">
             </app-interview-card>
 
             <app-candidate-details [candidate]="selectedCandidate" [show]="showDetails" (close)="showDetails = false">
             </app-candidate-details>
         </div>
     </div>
-    <!-- <app-loading-page *ngIf="isLoading"></app-loading-page> -->
-    <app-modal #modal></app-modal>
 </div>
