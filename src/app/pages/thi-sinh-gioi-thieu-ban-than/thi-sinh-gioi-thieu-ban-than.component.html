@@ -1,6 +1,14 @@
 <div class="bg-[#efefef] h-full">
     <div class="px-10 pt-5">
         <app-breadcrumb [items]="breadcrumbItems"></app-breadcrumb>
+
+        <div class="flex items-center mt-2">
+            <tui-icon icon="@tui.chevron-left" size="s"></tui-icon>
+            <h6 class="text-[24px] font-normal text-[#333333]">
+                Phỏng vấn
+            </h6>
+        </div>
+
         <div class="flex-1 p-6">
 
             <app-interview-card [candidate]="selectedCandidate" (viewDetails)="handleShowDetails()">

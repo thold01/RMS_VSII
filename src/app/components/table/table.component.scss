@@ -10,6 +10,25 @@
   filter: opacity(1);
 }
 
+// :host ::ng-deep td.custom-border {
+//   border: 1px solid #ccc !important;
+// }
+.custom-cell-border {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  // width: 122px;
+  border: 1px solid #ccc;
+  padding: 0 4px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 4px;
+}
+
+table[tuiTable] {
+  border-collapse: collapse;
+}
+
 [_nghost-ng-c3592356037] {
   border: 0;
   border-top: 1px solid var(--tui-border-normal);

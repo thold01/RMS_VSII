@@ -1,0 +1,24 @@
+<div class="bg-white p-4 rounded shadow w-full h-[313px]">
+    <div class="flex items-center justify-between">
+        <div>
+            <p class="text-sm text-gray-600">Câu hỏi đã trả lời</p>
+            <p class="text-xl font-bold">{{ stats.answered }}</p>
+        </div>
+        <div>
+            <p class="text-sm text-gray-600">Câu hỏi chưa trả lời</p>
+            <p class="text-xl font-bold">{{ stats.unanswered }}</p>
+        </div>
+    </div>
+
+    <!-- Chi tiết -->
+    <div class="mt-4 space-y-2">
+        <div *ngFor="let item of stats.detail" class="flex items-center justify-between text-sm bg-gray-50 p-2 rounded">
+            <span>{{ item.name }}</span>
+            <!-- Hiển thị status dưới dạng text hoặc badge -->
+            <span class="px-2 py-1 rounded text-white"
+                [ngClass]="item.status === 'Đã trả lời' ? 'bg-teal-500' : 'bg-yellow-500'">
+                {{ item.status }}
+            </span>
+        </div>
+    </div>
+</div>

@@ -40,6 +40,7 @@ export class ThiSinhGioiThieuBanThanComponent {
     height: 170,
     weight: 65,
     experience: 3,
+    brand: 'Chi nhánh Long Biên',
     position: 'Giao dịch viên',
     issueDate: '01/01/2015',
     issuePlace: 'Công an Hà Nội',

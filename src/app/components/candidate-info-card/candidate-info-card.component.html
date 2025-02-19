@@ -1,0 +1,17 @@
+<div class="bg-white p-4 rounded shadow w-full h-[313px]">
+    <div class="flex justify-between items-center mb-2">
+        <h3 class="text-lg font-semibold">{{ candidate?.name }}</h3>
+        <div (click)="onViewDetail()" class="mt-4 flex items-center cursor-pointer">
+            <span class="text-teal-600 hover:text-teal-800 text-sm">
+                Xem chi tiết
+            </span>
+            <tui-icon icon="chevron-right" />
+        </div>
+    </div>
+
+    <p class="text-sm text-gray-600">Email: {{ candidate?.email }}</p>
+    <p class="text-sm text-gray-600">CCCD: {{ candidate?.idCard }}</p>
+    <p class="text-sm text-gray-600">Ngày sinh: {{ candidate?.birthDate }}</p>
+
+
+</div>

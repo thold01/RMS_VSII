@@ -1,0 +1,21 @@
+.custom-scroll {
+  /* Cho Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--background-neutral-on-default-low, #0000001a)
+    transparent;
+}
+
+/* Cho trình duyệt WebKit */
+.custom-scroll::-webkit-scrollbar {
+  width: 8px; /* Chiều rộng thanh cuộn dọc */
+  height: 100px; /* Chiều cao thanh cuộn ngang nếu cần */
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: var(--background-neutral-on-default-low, #0000001a);
+  border-radius: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}

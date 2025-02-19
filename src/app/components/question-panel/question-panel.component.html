@@ -1,0 +1,21 @@
+<div class="bg-white p-4 rounded shadow">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-semibold">Câu hỏi</h2>
+        <span class="text-gray-500">Thời gian: {{ timeLeft }}</span>
+    </div>
+
+    <!-- Nếu question có nội dung -->
+    <div *ngIf="question; else noQuestion">
+        <p class="text-gray-700">{{ question.title }}</p>
+        <p class="text-gray-700">Gợi ý trả lời câu hỏi: {{ question.hint }}</p>
+        <p class="flex justify-end">Câu hỏi {{question.numQ}} thuộc lĩnh vực {{ question.category }}</p>
+    </div>
+
+    <!-- Nếu không có câu hỏi -->
+    <ng-template #noQuestion>
+        <div class="flex flex-col items-center text-gray-400 p-4">
+            <img src="assets/images/manage_question/IconSearchEmpty.png" alt="no question" class="h-16 mb-2" />
+            <p class="text-sm">Câu hỏi sẽ xuất hiện sau khi thí sinh chọn lĩnh vực</p>
+        </div>
+    </ng-template>
+</div>

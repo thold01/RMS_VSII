@@ -1,17 +1,22 @@
 <table tuiTable [style.width.rem]="36"
-  class="w-full border-collapse text-left border-t border-b border-1 border-gray-300">
+  class="!w-full !border-collapse text-left border-t border-b border-1 !border-gray-300">
   <thead>
     <tr tuiThGroup class="header-table border-b border-gray-300 w-32">
       <th *ngFor="let column of columns" tuiTh>
-        <span class="mx-auto w-16 border-b-2 border-red-600"></span> {{ column.label }}
+        <span class="mx-auto w-1 border-b-2 border-red-600"></span> {{ column.label }}
       </th>
       <th tuiTh></th>
     </tr>
   </thead>
   <tbody tuiTbody>
     <tr *ngFor="let item of data">
-      <td *ngFor="let column of columns" tuiTd [class.border]="column.hasBorder">
-        {{ item[column.key] }}
+      <td *ngFor="let column of columns" tuiTd >
+        <ng-container *ngIf="column.hasBorder; else normalContent">
+          <span class="custom-cell-border">{{ item[column.key] }}</span>
+        </ng-container>
+        <ng-template #normalContent>
+          {{ item[column.key] }}
+        </ng-template>
       </td>
 
       <!-- Cột Action nếu có truyền vào -->

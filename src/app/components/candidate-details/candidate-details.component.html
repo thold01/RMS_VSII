@@ -1,5 +1,5 @@
 <div *ngIf="show" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-    <div class="bg-white w-[900px]  max-w-full p-6 rounded-lg shadow-lg">
+    <div class="bg-white w-[900px] max-w-full p-6 rounded-lg shadow-lg">
         <!-- Header -->
         <div style="border-bottom: 1px solid #ccc;" class="flex justify-between items-center border-b pb-3">
             <h2 class="text-xl font-semibold">Chi tiết hồ sơ</h2>
@@ -87,10 +87,11 @@
                                 Điểm TN <div class="font-semibold">{{ candidate.graduationScore }}</div>
                             </div>
                             <div class="bg-teal-100 p-2 rounded-md text-center text-teal-700">
-                                Loại bằng <div class="font-semibold">{{ candidate.degreeType }}</div>
+                                Điểm TN <div class="font-semibold">{{ candidate.graduationScore | decimalToFraction }}
+                                </div>
                             </div>
                             <div class="bg-teal-100 p-2 rounded-md text-center text-teal-700">
-                                Loại bằng <div class="font-semibold">{{ candidate.degreeType }}</div>
+                                Loại văn bằng <div class="font-semibold">{{ candidate.degreeType }}</div>
                             </div>
                         </div>
                         <!-- thpt -->

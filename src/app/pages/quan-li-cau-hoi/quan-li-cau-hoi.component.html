@@ -1,0 +1,22 @@
+<div class="px-4">
+    <app-breadcrumb [items]="breadcrumbItems"></app-breadcrumb>
+</div>
+
+<div class="p-4 space-y-6 w-2/3 flex justify-center items-center flex-col mx-auto">
+    <!-- Câu hỏi + Thời gian -->
+    <app-question-panel [question]="questionData" [timeLeft]="timeLeft"></app-question-panel>
+
+    <!-- Khối dưới: Stats và Candidate Info -->
+    <div class="flex gap-6 w-full">
+        <div class='flex-1'>
+            <app-question-stats [stats]="statsData"></app-question-stats>
+        </div>
+        <div class='flex-1 h-full'>
+            <app-candidate-info-card [candidate]="selectedCandidate"
+                (viewDetail)="handleViewCandidateDetail()"></app-candidate-info-card>
+        </div>
+    </div>
+</div>
+
+<app-candidate-details *ngIf="showCandidateModal" [candidate]="selectedCandidate"
+    (close)="showCandidateModal = false" [show]="showCandidateModal"></app-candidate-details>

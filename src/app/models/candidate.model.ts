@@ -10,9 +10,11 @@ export interface Candidate {
   weight: number;
   position: string;
   issueDate: string;
+  birthDate?: string;
   issuePlace: string;
   address: string;
   phone: string;
+  brand: string;
   university: string;
   degree: string;
   grade: string;
