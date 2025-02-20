@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TuiBadge } from '@taiga-ui/kit';
 
 interface StatDetail {
   name: string;
@@ -9,7 +10,7 @@ interface StatDetail {
 @Component({
   selector: 'app-question-stats',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TuiBadge],
   templateUrl: './question-stats.component.html',
   styleUrls: ['./question-stats.component.scss'],
 })

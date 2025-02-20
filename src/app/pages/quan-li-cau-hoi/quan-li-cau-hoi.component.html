@@ -2,11 +2,19 @@
     <app-breadcrumb [items]="breadcrumbItems"></app-breadcrumb>
 </div>
 
-<div class="p-4 space-y-6 w-2/3 flex justify-center items-center flex-col mx-auto">
-    <!-- Câu hỏi + Thời gian -->
-    <app-question-panel [question]="questionData" [timeLeft]="timeLeft"></app-question-panel>
+<div class="flex items-center mt-2 px-2 cursor-pointer" (click)="goBack()">
+    <tui-icon icon="@tui.chevron-left" size="s"></tui-icon>
+    <h6 class="text-[24px] font-normal text-[#333333]">
+        Phỏng vấn
+    </h6>
+</div>
 
-    <!-- Khối dưới: Stats và Candidate Info -->
+<div class="p-4 space-y-6 w-2/3 flex justify-center items-center flex-col mx-auto">
+    <div class="w-full">
+        <app-question-panel [question]="questionData" [totalTime]="totalTime" [isTimeUp]="isTimeUp"
+            [hasError]="questionPanelHasError"></app-question-panel>
+    </div>
+
     <div class="flex gap-6 w-full">
         <div class='flex-1'>
             <app-question-stats [stats]="statsData"></app-question-stats>
@@ -18,5 +26,5 @@
     </div>
 </div>
 
-<app-candidate-details *ngIf="showCandidateModal" [candidate]="selectedCandidate"
-    (close)="showCandidateModal = false" [show]="showCandidateModal"></app-candidate-details>
+<app-candidate-details *ngIf="showCandidateModal" [candidate]="selectedCandidate" (close)="showCandidateModal = false"
+    [show]="showCandidateModal"></app-candidate-details>

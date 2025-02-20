@@ -13,12 +13,13 @@
 }
 
 html {
-  font-family: "Roboto", serif;
+  font-family: "Roboto", serif !important;
 }
 
 :root {
   --tui-height-s: 40px;
   /* Thay đổi chiều cao của kích thước "s" */
+  --tui-font-text-s: "Roboto", serif;
   --border-default: 1px solid rgba(0, 0, 0, 0.2); // Màu #00000033
   --tui-background-accent-1: #006b68;
   --tui-background-accent-1-hover: #006b68;

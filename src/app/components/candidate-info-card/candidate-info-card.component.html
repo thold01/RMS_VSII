@@ -1,6 +1,14 @@
-<div class="bg-white p-4 rounded shadow w-full h-[313px]">
-    <div class="flex justify-between items-center mb-2">
-        <h3 class="text-lg font-semibold">{{ candidate?.name }}</h3>
+<div class="bg-white rounded-2xl shadow w-full h-[313px]">
+    <div style="border-bottom: 1px solid #ccc" class="p-6 flex items-center justify-between w-full pb-6">
+        <div class="flex items-center gap-2">
+            <div class="bg-[#F5F5F5] w-12 h-12 rounded-lg flex items-center justify-center">
+            <img src="assets/images/infor_candidate/IconPersonal.png" class="w-8 h-8"  />
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold">{{ candidate?.name }}</h3>
+                <p>Vị trí: {{candidate?.position}}</p>
+            </div>
+        </div>
         <div (click)="onViewDetail()" class="mt-4 flex items-center cursor-pointer">
             <span class="text-teal-600 hover:text-teal-800 text-sm">
                 Xem chi tiết
@@ -9,9 +17,30 @@
         </div>
     </div>
 
-    <p class="text-sm text-gray-600">Email: {{ candidate?.email }}</p>
-    <p class="text-sm text-gray-600">CCCD: {{ candidate?.idCard }}</p>
-    <p class="text-sm text-gray-600">Ngày sinh: {{ candidate?.birthDate }}</p>
-
-
+    <div class="px-4">
+        <div class="flex my-6 gap-2">
+            <img src="assets/images/manage_question/IconMail.png" class="w-5 h-5" />
+            <p class="text-sm text-gray-600">
+                Email: {{candidate.email }}
+            </p>
+        </div>
+        <div class="flex my-6 gap-2">
+            <img src="assets/images/manage_question/IconContactCard.png" class="w-5 h-5" />
+            <p class="text-sm t sext-gray-600">
+                CCCD: {{ candidate?.idCard }}
+            </p>
+        </div>
+        <div class="flex my-6 gap-2">
+            <img src="assets/images/manage_question/IconPerson.png" class="w-5 h-5" />
+            <p class="text-sm text-gray-600">
+                Giới tính: {{candidate.gender }}
+            </p>
+        </div>
+        <div class="flex my-6 gap-2">
+            <img src="assets/images/manage_question/IconCalendar.png" class="w-5 h-5" />
+            <p class="text-sm text-gray-600">
+                Ngày sinh: {{ candidate?.dob }}
+            </p>
+        </div>
+    </div>
 </div>

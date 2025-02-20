@@ -1,21 +1,45 @@
-<div class="bg-white p-4 rounded shadow">
-    <div class="flex justify-between items-center mb-4">
-        <h2 class="text-lg font-semibold">Câu hỏi</h2>
-        <span class="text-gray-500">Thời gian: {{ timeLeft }}</span>
+<div class="bg-white p-4 rounded-2xl shadow w-full">
+    <div style="border-bottom: 1px solid #00000033" class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-semibold mb-4">Câu hỏi</h2>
+        <span class="text-gray-500 mb-4">Thời gian: {{ timeLeft }}</span>
     </div>
 
-    <!-- Nếu question có nội dung -->
-    <div *ngIf="question; else noQuestion">
-        <p class="text-gray-700">{{ question.title }}</p>
-        <p class="text-gray-700">Gợi ý trả lời câu hỏi: {{ question.hint }}</p>
-        <p class="flex justify-end">Câu hỏi {{question.numQ}} thuộc lĩnh vực {{ question.category }}</p>
-    </div>
-
-    <!-- Nếu không có câu hỏi -->
-    <ng-template #noQuestion>
+    <!-- Nếu có lỗi -->
+    <ng-container *ngIf="hasError; else normalFlow">
         <div class="flex flex-col items-center text-gray-400 p-4">
-            <img src="assets/images/manage_question/IconSearchEmpty.png" alt="no question" class="h-16 mb-2" />
-            <p class="text-sm">Câu hỏi sẽ xuất hiện sau khi thí sinh chọn lĩnh vực</p>
+            <img src="assets/images/manage_question/IconSearchEmpty.png" alt="error" class="h-16 mb-2" />
+            <p class="text-sm">Có lỗi xảy ra, vui lòng kiểm tra lại</p>
         </div>
+    </ng-container>
+
+    <!-- Nếu không có lỗi -->
+    <ng-template #normalFlow>
+        <!-- Nếu question có nội dung -->
+        <div *ngIf="question; else noQuestion">
+            <p class="text-gray-700">{{ question.title }}</p>
+
+            <div style="border-left: 4px solid #006B68" class="px-3 my-3">
+                <p class="font-medium text-gray-800">Gợi ý trả lời câu hỏi:</p>
+                <p class="text-gray-600 text-sm mt-1">{{ question.hint }}</p>
+            </div>
+
+            <p class="flex justify-end">Câu hỏi {{ question.numQ }} thuộc lĩnh vực {{ question.category }}</p>
+        </div>
+
+        <!-- Nếu không có câu hỏi -->
+        <ng-template #noQuestion>
+            <div class="flex flex-col items-center text-gray-400 p-4">
+                <img src="assets/images/manage_question/IconSearchEmpty.png" alt="no question" class="h-16 mb-2" />
+                <p class="text-sm">Câu hỏi sẽ xuất hiện sau khi thí sinh chọn lĩnh vực</p>
+            </div>
+        </ng-template>
     </ng-template>
+</div>
+
+<div *ngIf="isTimeUp" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+        <h3 class="text-xl font-semibold text-red-600">Hết thời gian!</h3>
+        <p class="text-gray-600 my-2">Bạn đã hết thời gian làm bài.</p>
+        <button (click)="closePopup()" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded">OK</button>
+    </div>
 </div>

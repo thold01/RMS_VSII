@@ -1,5 +1,8 @@
-<div class="bg-white p-4 rounded shadow w-full h-[313px]">
-    <div class="flex items-center justify-between">
+<div class="bg-white rounded-2xl shadow w-full h-[313px]">
+    <div style="border-bottom: 1px solid #ccc" class="p-6 flex items-center justify-between w-full pb-6">
+        <div class="bg-[#F5F5F5] w-12 h-12 rounded-lg flex items-center justify-center">
+            <img src="assets/images/manage_question/IconChatBubblesQuestion.png" alt="question" class="w-8 h-8" />
+        </div>
         <div>
             <p class="text-sm text-gray-600">Câu hỏi đã trả lời</p>
             <p class="text-xl font-bold">{{ stats.answered }}</p>
@@ -11,14 +14,24 @@
     </div>
 
     <!-- Chi tiết -->
-    <div class="mt-4 space-y-2">
-        <div *ngFor="let item of stats.detail" class="flex items-center justify-between text-sm bg-gray-50 p-2 rounded">
-            <span>{{ item.name }}</span>
-            <!-- Hiển thị status dưới dạng text hoặc badge -->
-            <span class="px-2 py-1 rounded text-white"
-                [ngClass]="item.status === 'Đã trả lời' ? 'bg-teal-500' : 'bg-yellow-500'">
+    <div class="mt-4 space-y-2 px-4">
+        <div *ngFor="let item of stats.detail" class="flex items-center justify-between text-sm p-2 rounded">
+            <span>Câu hỏi {{ item.name }}</span>
+            <!-- Sử dụng TUI Badge -->
+            <tui-badge 
+                [ngClass]="{
+                    'flex items-center gap-2': true,
+                    'bg-[#d4edda] text-[#155724]': item.status === 'Đã trả lời',
+                    'bg-[#fff3cd] text-[#856404]': item.status === 'Đang trả lời',
+                    'bg-[#e2e3e5] text-[#383d41]': item.status === 'Chưa trả lời'
+                }" 
+                style="padding-left: 8px;"
+                size="m" 
+                class="custom-1"
+                [iconStart]="item.status === 'Đã trả lời' ? 'circle-check' : item.status === 'Chưa trả lời' ? 'circle-minus' : 'clock'"
+            >
                 {{ item.status }}
-            </span>
+            </tui-badge>
         </div>
     </div>
 </div>
