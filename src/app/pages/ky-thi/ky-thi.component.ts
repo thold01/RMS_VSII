@@ -10,6 +10,8 @@ import { DataService } from 'src/app/services/data.service';
 import { NoDataComponent } from 'src/app/layouts/no-data/no-data.component';
 import PaginationComponent from 'src/app/components/pagination/pagination.component';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
+import { LoginPageComponent } from "../login/login.component";
+import { InputTextComponent } from "../../components/input-text/input-text.component";
 
 @Component({
   selector: 'ky-thi',
@@ -22,7 +24,9 @@ import { CustomButtonComponent } from '../../components/custom-button/custom-but
     NoDataComponent,
     PaginationComponent,
     CustomButtonComponent,
-  ],
+    LoginPageComponent,
+    InputTextComponent
+],
   templateUrl: './ky-thi.component.html',
   styleUrls: ['./ky-thi.component.scss'],
 })

@@ -10,7 +10,7 @@
       <div *ngIf="data.length > 0; else noDataTemplate">
         <app-table [data]="filteredData" [columns]="columns" [actionTemplate]="actionTpl"></app-table>
         <ng-template #actionTpl let-item>
-          <app-buttons label="Tham gia" [item]="item" (joinTestEvent)="handleJoinTest($event)"></app-buttons>
+          <app-buttons label="Tham gia" [item]="item" (buttonClick)="handleJoinTest($event)"></app-buttons>
         </ng-template>
         <div class="pt-4 pb-4 flex w-full">
           <div class="w-full">

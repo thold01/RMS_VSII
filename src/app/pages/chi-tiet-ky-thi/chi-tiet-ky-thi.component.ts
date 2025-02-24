@@ -25,6 +25,9 @@ import TableComponent from '../../components/table/table.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChiTietKyThiComponent {
+  onModalClose() {
+    console.log('Modal has been closed');
+  }
   columns = [
     { key: 'id', label: 'STT', hasBorder: false },
     { key: 'name', label: 'Họ và tên', hasBorder: false },

@@ -1,14 +1,13 @@
-<div class="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-  <div class="bg-white p-8 rounded shadow-md max-w-md w-full text-center">
-    <h1 class="text-xl font-semibold mb-4">
-      Chào mừng bạn đến với buổi phỏng vấn
-    </h1>
-    <app-room-input></app-room-input>
-    <button
-      class="mt-4 bg-teal-500 hover:bg-teal-600 text-white py-2 px-6 rounded"
-      (click)="enterRoom()"
-    >
-      Vào phòng
-    </button>
+<div class="flex  items-center justify-center min-h-screen bg-gray-50">
+  <div>
+    <img src="assets/images/login/OTP.png" alt="Disconnected" class="w-64 mx-auto mb-8" />
+  </div>
+  <div>
+    <img src="assets/images/login/LogoBIDVFull.png" />
+    <div>Chào mừng bạn đến với buổi phỏng vấn</div>
+    <app-search-input placeholder="Nhập mã phòng" iconName="@tui.search"
+      class="border border-gray-300 rounded"></app-search-input>
+    <!-- <app-room-input></app-room-input> -->
+    <app-buttons type="search" label="Vào phòng" (buttonClick)="enterRoom"></app-buttons>
   </div>
 </div>

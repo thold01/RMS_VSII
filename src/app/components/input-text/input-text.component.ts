@@ -8,14 +8,15 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, TuiIcon, FormsModule],
   templateUrl: './input-text.component.html',
-  styleUrls: ['./input-text.component.scss']
+  styleUrls: ['./input-text.component.scss'],
 })
 export class InputTextComponent {
   @Input() iconName: string = '';
   @Input() placeholder: string = '';
+  @Input() closeIcon = '/assets/close.png';
   value: string = '';
 
   clearValue() {
-    this.value = ''
+    this.value = '';
   }
 }

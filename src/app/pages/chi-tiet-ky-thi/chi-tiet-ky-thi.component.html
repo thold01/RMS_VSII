@@ -55,5 +55,5 @@
     </div>
   </div>
   <!-- <app-loading-page *ngIf="isLoading"></app-loading-page> -->
-  <app-modal #modal></app-modal>
+  <app-modal #modal (closeModal)="onModalClose()"></app-modal>
 </div>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buttons',
@@ -13,12 +14,19 @@ export class CustomButtonComponent {
     'confirm';
   @Input() label: string = '';
   @Input() iconUrl: string = '';
+  @Input() redirectUrl: string = ''; // URL để chuyển hướng
   @Input() disabled: boolean = false;
   @Input() item: any;
 
-  @Output() joinTestEvent = new EventEmitter<any>(); 
+  @Output() buttonClick = new EventEmitter<any>();
+
+  constructor(private router: Router) {}
 
   onClick() {
-    this.joinTestEvent.emit(this.item); // Gửi dữ liệu khi click
+    this.buttonClick.emit(this.item); // Gửi dữ liệu khi click
+
+    if (this.redirectUrl) {
+      this.router.navigate([this.redirectUrl]);
+    }
   }
 }
