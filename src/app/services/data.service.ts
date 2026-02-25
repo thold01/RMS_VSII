@@ -1,17 +1,110 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Injectable, signal, computed, effect } from '@angular/core';
 
+/**
+ * 🎯 DATA SERVICE VỚI SIGNAL
+ * ==========================
+ * Service này demo các pattern phổ biến khi dùng Signal
+ */
 @Injectable({
-  providedIn: 'root', // Để có thể dùng service trong toàn bộ ứng dụng
+  providedIn: 'root',
 })
 export class DataService {
-  private subject = new BehaviorSubject<any>(null); // Subject để truyền dữ liệu
+  /**
+   * 📦 SIGNAL CƠ BẢN
+   * ================
+   * Thay thế BehaviorSubject bằng signal()
+   * - Đơn giản hơn, không cần import từ rxjs
+   * - Không cần quản lý subscription
+   */
+  private _data = signal<any>(null);
+  readonly data = this._data.asReadonly();
 
-  sendData(data: any) {
-    this.subject.next(data); // Phát dữ liệu
+  /**
+   * 📊 LOADING STATE
+   * ================
+   * Signal rất phù hợp để quản lý UI state
+   */
+  private _isLoading = signal(false);
+  readonly isLoading = this._isLoading.asReadonly();
+
+  /**
+   * ❌ ERROR STATE
+   */
+  private _error = signal<string | null>(null);
+  readonly error = this._error.asReadonly();
+
+  /**
+   * 🧮 COMPUTED: TRẠNG THÁI TỔNG HỢP
+   * =================================
+   * Computed signal tự động cập nhật khi dependencies thay đổi
+   * Ở đây: status phụ thuộc vào isLoading, error, và data
+   */
+  readonly status = computed(() => {
+    if (this._isLoading()) return 'loading';
+    if (this._error()) return 'error';
+    if (this._data()) return 'success';
+    return 'idle';
+  });
+
+  // Kiểm tra có dữ liệu không
+  readonly hasData = computed(() => this._data() !== null);
+
+  /**
+   * 📝 SET DATA
+   * ===========
+   * .set() thay thế hoàn toàn giá trị cũ
+   */
+  sendData(data: any): void {
+    this._data.set(data);
   }
 
-  getData() {
-    return this.subject.asObservable(); // Nhận dữ liệu
+  /**
+   * 🔄 UPDATE DATA
+   * ==============
+   * .update() nhận function với giá trị cũ, trả về giá trị mới
+   * Hữu ích khi cập nhật một phần của object
+   */
+  updateData(partialData: Partial<any>): void {
+    this._data.update((current) => ({
+      ...current,
+      ...partialData,
+    }));
+  }
+
+  /**
+   * 📖 GET DATA
+   * ===========
+   * Đọc giá trị bằng cách gọi signal như function
+   */
+  getData(): any {
+    return this._data();
+  }
+
+  /**
+   * 🔄 ASYNC OPERATION VỚI SIGNAL
+   * =============================
+   * Pattern phổ biến: quản lý loading/error/data
+   */
+  async fetchData(apiCall: () => Promise<any>): Promise<void> {
+    this._isLoading.set(true);
+    this._error.set(null);
+
+    try {
+      const result = await apiCall();
+      this._data.set(result);
+    } catch (err) {
+      this._error.set(err instanceof Error ? err.message : 'Có lỗi xảy ra');
+    } finally {
+      this._isLoading.set(false);
+    }
+  }
+
+  /**
+   * 🧹 RESET STATE
+   */
+  reset(): void {
+    this._data.set(null);
+    this._isLoading.set(false);
+    this._error.set(null);
   }
 }
